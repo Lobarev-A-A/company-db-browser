@@ -78,37 +78,73 @@ namespace CompanyDBBrowser.App
             DepartmentTreeView.Visible = false;
         }
 
+        private void DepartmentTreeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            Department selectedDepartment = (Department)DepartmentTreeView.SelectedNode.Tag;
+            ShowDepartmentDetails(selectedDepartment);
+            ShowDepartmentEmployees(selectedDepartment);
+        }
         private void DepartmentListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (DepartmentListBox.SelectedIndex != -1)
             {
-                Department selectedItem = (Department)DepartmentListBox.SelectedItem;
-
-                string[] row0 = { "ID", selectedItem.ID.ToString() };
-                string[] row1 = { "Name", selectedItem.Name };
-                string[] row2 = { "ParentDepartmentID", selectedItem.ParentDepartmentID.ToString() };
-
-                DepartmentDetailsGridView.Rows.Clear();
-                DepartmentDetailsGridView.ColumnCount = 2;
-                DepartmentDetailsGridView.Rows.Add(row0);
-                DepartmentDetailsGridView.Rows.Add(row1);
-                DepartmentDetailsGridView.Rows.Add(row2);
+                Department selectedDepartment = (Department)DepartmentListBox.SelectedItem;
+                ShowDepartmentDetails(selectedDepartment);
+                ShowDepartmentEmployees(selectedDepartment);
             }
         }
 
-        private void DepartmentTreeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        private void ShowDepartmentDetails(Department selectedDepartment)
         {
-            Department selectedNode = (Department)DepartmentTreeView.SelectedNode.Tag;
+            using (dataBase = new Model())
+            {
+                dataBase.Departments.Attach(selectedDepartment);
 
-            string[] row0 = { "ID", selectedNode.ID.ToString() };
-            string[] row1 = { "Name", selectedNode.Name };
-            string[] row2 = { "ParentDepartmentID", selectedNode.ParentDepartmentID.ToString() };
+                string parentDepartment = (dataBase.Departments.Find(selectedDepartment.ParentDepartmentID) == null) ? "" : dataBase.Departments.Find(selectedDepartment.ParentDepartmentID);
+                string[][] rows = new string[][]
+                {
+                new string[] { "ID", selectedDepartment.ID.ToString() },
+                new string[] { "Название", selectedDepartment.Name },
+                new string[] { "Родительский отдел", parentDepartment },
+                new string[] { "ID родительского отдела", selectedDepartment.ParentDepartmentID.ToString() }
+                };
 
-            DepartmentDetailsGridView.Rows.Clear();
-            DepartmentDetailsGridView.ColumnCount = 2;
-            DepartmentDetailsGridView.Rows.Add(row0);
-            DepartmentDetailsGridView.Rows.Add(row1);
-            DepartmentDetailsGridView.Rows.Add(row2);
+                DepartmentDetailsGridView.Rows.Clear();
+                DepartmentDetailsGridView.ColumnCount = 2;
+
+                foreach (string[] row in rows)
+                {
+                    DepartmentDetailsGridView.Rows.Add(row);
+                }
+            }
+        }
+        private void ShowDepartmentEmployees(Department selectedDepartment)
+        {
+            using (dataBase = new Model())
+            {
+                dataBase.Departments.Attach(selectedDepartment);
+                EmployeesGridView.Rows.Clear();
+
+                EmployeesGridView.ColumnCount = 11;
+                EmployeesGridView.Columns[0].Name = "ID";
+                EmployeesGridView.Columns[1].Name = "Фамилия";
+                EmployeesGridView.Columns[2].Name = "Имя";
+                EmployeesGridView.Columns[3].Name = "Отчество";
+                EmployeesGridView.Columns[4].Name = "Дата рождения";
+                EmployeesGridView.Columns[5].Name = "ID";
+                EmployeesGridView.Columns[6].Name = "Серия документа";
+                EmployeesGridView.Columns[7].Name = "Номер документа";
+                EmployeesGridView.Columns[8].Name = "Отдел";
+                EmployeesGridView.Columns[9].Name = "Должность";
+                EmployeesGridView.Columns[10].Name = "ID отдела";
+
+                foreach (Employee emp in selectedDepartment.Employees)
+                {
+                    string[] empRow0 = { "ID", emp.ID.ToString() };
+
+                    EmployeesGridView.Rows.Add(empRow0);
+                }
+            }
         }
     }
 }

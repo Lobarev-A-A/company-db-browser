@@ -120,12 +120,15 @@
             // 
             this.EmployeesGridView.AllowUserToAddRows = false;
             this.EmployeesGridView.AllowUserToDeleteRows = false;
+            this.EmployeesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.EmployeesGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.EmployeesGridView.BackgroundColor = System.Drawing.SystemColors.Window;
             this.EmployeesGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.EmployeesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.EmployeesGridView.Location = new System.Drawing.Point(0, 21);
             this.EmployeesGridView.Name = "EmployeesGridView";
             this.EmployeesGridView.ReadOnly = true;
+            this.EmployeesGridView.RowHeadersVisible = false;
             this.EmployeesGridView.RowHeadersWidth = 51;
             this.EmployeesGridView.RowTemplate.Height = 24;
             this.EmployeesGridView.Size = new System.Drawing.Size(602, 575);
