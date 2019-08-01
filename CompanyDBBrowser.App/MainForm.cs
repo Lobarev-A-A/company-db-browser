@@ -72,11 +72,43 @@ namespace CompanyDBBrowser.App
             DepartmentListBox.Visible = false;
             DepartmentTreeView.Visible = true;
         }
-
         private void ListViewRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             DepartmentListBox.Visible = true;
             DepartmentTreeView.Visible = false;
+        }
+
+        private void DepartmentListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (DepartmentListBox.SelectedIndex != -1)
+            {
+                Department selectedItem = (Department)DepartmentListBox.SelectedItem;
+
+                string[] row0 = { "ID", selectedItem.ID.ToString() };
+                string[] row1 = { "Name", selectedItem.Name };
+                string[] row2 = { "ParentDepartmentID", selectedItem.ParentDepartmentID.ToString() };
+
+                DepartmentDetailsGridView.Rows.Clear();
+                DepartmentDetailsGridView.ColumnCount = 2;
+                DepartmentDetailsGridView.Rows.Add(row0);
+                DepartmentDetailsGridView.Rows.Add(row1);
+                DepartmentDetailsGridView.Rows.Add(row2);
+            }
+        }
+
+        private void DepartmentTreeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            Department selectedNode = (Department)DepartmentTreeView.SelectedNode.Tag;
+
+            string[] row0 = { "ID", selectedNode.ID.ToString() };
+            string[] row1 = { "Name", selectedNode.Name };
+            string[] row2 = { "ParentDepartmentID", selectedNode.ParentDepartmentID.ToString() };
+
+            DepartmentDetailsGridView.Rows.Clear();
+            DepartmentDetailsGridView.ColumnCount = 2;
+            DepartmentDetailsGridView.Rows.Add(row0);
+            DepartmentDetailsGridView.Rows.Add(row1);
+            DepartmentDetailsGridView.Rows.Add(row2);
         }
     }
 }
