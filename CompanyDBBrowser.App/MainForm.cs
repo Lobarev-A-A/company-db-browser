@@ -43,6 +43,11 @@ namespace CompanyDBBrowser.App
                     DepartmentListBox.Items.Add(d);
                 }
             }
+
+            // Установка начального состояния элементов формы
+            TreeViewRadioButton.Checked = true;
+            DepartmentListBox.Visible = false;
+            DepartmentTreeView.Visible = true;
         }
 
         private TreeNode TreeViewRecursiveInitialization(Department curDepartment, System.Data.Entity.DbSet<Department> departments)
@@ -60,6 +65,18 @@ namespace CompanyDBBrowser.App
             TreeNode outputTreeNode = new TreeNode(curDepartment.Name, childrenTreeNodes);
             outputTreeNode.Tag = curDepartment;
             return outputTreeNode;
+        }
+
+        private void TreeViewRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            DepartmentListBox.Visible = false;
+            DepartmentTreeView.Visible = true;
+        }
+
+        private void ListViewRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            DepartmentListBox.Visible = true;
+            DepartmentTreeView.Visible = false;
         }
     }
 }
