@@ -31,8 +31,8 @@
             this.CompanyNameLabel = new System.Windows.Forms.Label();
             this.DepartmentTreeView = new System.Windows.Forms.TreeView();
             this.DepartmenViewSwitch = new System.Windows.Forms.GroupBox();
-            this.TreeViewRadioButton = new System.Windows.Forms.RadioButton();
             this.ListViewRadioButton = new System.Windows.Forms.RadioButton();
+            this.TreeViewRadioButton = new System.Windows.Forms.RadioButton();
             this.EmployeesGridView = new System.Windows.Forms.DataGridView();
             this.DepartmentInformationLabel = new System.Windows.Forms.Label();
             this.DepartmentDetailsGridView = new System.Windows.Forms.DataGridView();
@@ -42,6 +42,7 @@
             this.AddEmployeeButton = new System.Windows.Forms.Button();
             this.EditEmployeeButton = new System.Windows.Forms.Button();
             this.DeleteEmployeeButton = new System.Windows.Forms.Button();
+            this.DepartmentListBox = new System.Windows.Forms.ListBox();
             this.DepartmenViewSwitch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeesGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DepartmentDetailsGridView)).BeginInit();
@@ -73,27 +74,27 @@
             this.DepartmenViewSwitch.TabIndex = 2;
             this.DepartmenViewSwitch.TabStop = false;
             // 
-            // TreeViewRadioButton
-            // 
-            this.TreeViewRadioButton.AutoSize = true;
-            this.TreeViewRadioButton.Location = new System.Drawing.Point(16, 22);
-            this.TreeViewRadioButton.Name = "TreeViewRadioButton";
-            this.TreeViewRadioButton.Size = new System.Drawing.Size(79, 21);
-            this.TreeViewRadioButton.TabIndex = 0;
-            this.TreeViewRadioButton.TabStop = true;
-            this.TreeViewRadioButton.Text = "Дерево";
-            this.TreeViewRadioButton.UseVisualStyleBackColor = true;
-            // 
             // ListViewRadioButton
             // 
             this.ListViewRadioButton.AutoSize = true;
-            this.ListViewRadioButton.Location = new System.Drawing.Point(133, 22);
+            this.ListViewRadioButton.Location = new System.Drawing.Point(91, 21);
             this.ListViewRadioButton.Name = "ListViewRadioButton";
             this.ListViewRadioButton.Size = new System.Drawing.Size(76, 21);
             this.ListViewRadioButton.TabIndex = 1;
             this.ListViewRadioButton.TabStop = true;
             this.ListViewRadioButton.Text = "Список";
             this.ListViewRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // TreeViewRadioButton
+            // 
+            this.TreeViewRadioButton.AutoSize = true;
+            this.TreeViewRadioButton.Location = new System.Drawing.Point(6, 21);
+            this.TreeViewRadioButton.Name = "TreeViewRadioButton";
+            this.TreeViewRadioButton.Size = new System.Drawing.Size(79, 21);
+            this.TreeViewRadioButton.TabIndex = 0;
+            this.TreeViewRadioButton.TabStop = true;
+            this.TreeViewRadioButton.Text = "Дерево";
+            this.TreeViewRadioButton.UseVisualStyleBackColor = true;
             // 
             // EmployeesGridView
             // 
@@ -184,11 +185,21 @@
             this.DeleteEmployeeButton.Text = "Удалить сотрудника";
             this.DeleteEmployeeButton.UseVisualStyleBackColor = true;
             // 
+            // DepartmentListBox
+            // 
+            this.DepartmentListBox.FormattingEnabled = true;
+            this.DepartmentListBox.ItemHeight = 16;
+            this.DepartmentListBox.Location = new System.Drawing.Point(372, 51);
+            this.DepartmentListBox.Name = "DepartmentListBox";
+            this.DepartmentListBox.Size = new System.Drawing.Size(303, 356);
+            this.DepartmentListBox.TabIndex = 12;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 703);
+            this.Controls.Add(this.DepartmentListBox);
             this.Controls.Add(this.DeleteEmployeeButton);
             this.Controls.Add(this.EditEmployeeButton);
             this.Controls.Add(this.AddEmployeeButton);
@@ -228,6 +239,7 @@
         private System.Windows.Forms.Button AddEmployeeButton;
         private System.Windows.Forms.Button EditEmployeeButton;
         private System.Windows.Forms.Button DeleteEmployeeButton;
+        private System.Windows.Forms.ListBox DepartmentListBox;
     }
 }
 
