@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace CompanyDBBrowser.App
 {
     public partial class MainForm : Form
     {
         Model dataBase;
+        CultureInfo culture = new CultureInfo("ru-RU");
 
         public MainForm()
         {
@@ -48,6 +50,21 @@ namespace CompanyDBBrowser.App
             TreeViewRadioButton.Checked = true;
             DepartmentListBox.Visible = false;
             DepartmentTreeView.Visible = true;
+
+            #region EmployeesGridView Header
+            EmployeesGridView.ColumnCount = 11;
+            EmployeesGridView.Columns[0].Name = "ID";
+            EmployeesGridView.Columns[1].Name = "Фамилия";
+            EmployeesGridView.Columns[2].Name = "Имя";
+            EmployeesGridView.Columns[3].Name = "Отчество";
+            EmployeesGridView.Columns[4].Name = "Дата рождения";
+            EmployeesGridView.Columns[5].Name = "Возраст";
+            EmployeesGridView.Columns[6].Name = "Серия документа";
+            EmployeesGridView.Columns[7].Name = "Номер документа";
+            EmployeesGridView.Columns[8].Name = "Отдел";
+            EmployeesGridView.Columns[9].Name = "Должность";
+            EmployeesGridView.Columns[10].Name = "ID отдела";
+            #endregion
         }
 
         private TreeNode TreeViewRecursiveInitialization(Department curDepartment, System.Data.Entity.DbSet<Department> departments)
@@ -100,12 +117,17 @@ namespace CompanyDBBrowser.App
             {
                 dataBase.Departments.Attach(selectedDepartment);
 
-                string parentDepartment = (dataBase.Departments.Find(selectedDepartment.ParentDepartmentID) == null) ? "" : dataBase.Departments.Find(selectedDepartment.ParentDepartmentID);
+                string parentDepartmentName = "";
+                if (selectedDepartment.ParentDepartmentID != null)
+                    // Не учтена ситуация, когда в базе нет департамента с таким ID (хз, может ли она возникнуть)
+                    parentDepartmentName = dataBase.Departments.Find(selectedDepartment.ParentDepartmentID).Name;
+
                 string[][] rows = new string[][]
                 {
                 new string[] { "ID", selectedDepartment.ID.ToString() },
                 new string[] { "Название", selectedDepartment.Name },
-                new string[] { "Родительский отдел", parentDepartment },
+                // new string[] { "Количество сотрудниов", selectedDepartment.Employees.Count.ToString() },
+                new string[] { "Родительский отдел", parentDepartmentName },
                 new string[] { "ID родительского отдела", selectedDepartment.ParentDepartmentID.ToString() }
                 };
 
@@ -123,26 +145,15 @@ namespace CompanyDBBrowser.App
             using (dataBase = new Model())
             {
                 dataBase.Departments.Attach(selectedDepartment);
-                EmployeesGridView.Rows.Clear();
+                EmployeesGridView.Rows.Clear();                
 
-                EmployeesGridView.ColumnCount = 11;
-                EmployeesGridView.Columns[0].Name = "ID";
-                EmployeesGridView.Columns[1].Name = "Фамилия";
-                EmployeesGridView.Columns[2].Name = "Имя";
-                EmployeesGridView.Columns[3].Name = "Отчество";
-                EmployeesGridView.Columns[4].Name = "Дата рождения";
-                EmployeesGridView.Columns[5].Name = "ID";
-                EmployeesGridView.Columns[6].Name = "Серия документа";
-                EmployeesGridView.Columns[7].Name = "Номер документа";
-                EmployeesGridView.Columns[8].Name = "Отдел";
-                EmployeesGridView.Columns[9].Name = "Должность";
-                EmployeesGridView.Columns[10].Name = "ID отдела";
-
-                foreach (Employee emp in selectedDepartment.Employees)
+                foreach (Employee employee in selectedDepartment.Employees)
                 {
-                    string[] empRow0 = { "ID", emp.ID.ToString() };
+                    string[] row = { employee.ID.ToString(), employee.SurName, employee.FirstName, employee.Patronymic,
+                                     employee.DateOfBirth.ToString("d", culture), "Age", employee.DocSeries, employee.DocNumber,
+                                     employee.Department.Name, employee.Position, employee.DepartmentID.ToString()};
 
-                    EmployeesGridView.Rows.Add(empRow0);
+                    EmployeesGridView.Rows.Add(row);
                 }
             }
         }

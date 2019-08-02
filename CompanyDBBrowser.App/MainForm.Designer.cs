@@ -65,7 +65,7 @@
             // 
             this.DepartmentTreeView.Location = new System.Drawing.Point(0, 21);
             this.DepartmentTreeView.Name = "DepartmentTreeView";
-            this.DepartmentTreeView.Size = new System.Drawing.Size(348, 356);
+            this.DepartmentTreeView.Size = new System.Drawing.Size(401, 356);
             this.DepartmentTreeView.TabIndex = 1;
             this.DepartmentTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.DepartmentTreeView_NodeMouseDoubleClick);
             // 
@@ -77,7 +77,7 @@
             this.DepartmentsViewGroupBox.Controls.Add(this.DepartmentTreeView);
             this.DepartmentsViewGroupBox.Location = new System.Drawing.Point(10, 33);
             this.DepartmentsViewGroupBox.Name = "DepartmentsViewGroupBox";
-            this.DepartmentsViewGroupBox.Size = new System.Drawing.Size(350, 412);
+            this.DepartmentsViewGroupBox.Size = new System.Drawing.Size(403, 412);
             this.DepartmentsViewGroupBox.TabIndex = 2;
             this.DepartmentsViewGroupBox.TabStop = false;
             this.DepartmentsViewGroupBox.Text = "Отделы";
@@ -86,9 +86,9 @@
             // 
             this.DepartmentListBox.FormattingEnabled = true;
             this.DepartmentListBox.ItemHeight = 16;
-            this.DepartmentListBox.Location = new System.Drawing.Point(1, 21);
+            this.DepartmentListBox.Location = new System.Drawing.Point(0, 21);
             this.DepartmentListBox.Name = "DepartmentListBox";
-            this.DepartmentListBox.Size = new System.Drawing.Size(348, 356);
+            this.DepartmentListBox.Size = new System.Drawing.Size(401, 356);
             this.DepartmentListBox.TabIndex = 12;
             this.DepartmentListBox.SelectedIndexChanged += new System.EventHandler(this.DepartmentListBox_SelectedIndexChanged);
             // 
@@ -131,12 +131,12 @@
             this.EmployeesGridView.RowHeadersVisible = false;
             this.EmployeesGridView.RowHeadersWidth = 51;
             this.EmployeesGridView.RowTemplate.Height = 24;
-            this.EmployeesGridView.Size = new System.Drawing.Size(602, 575);
+            this.EmployeesGridView.Size = new System.Drawing.Size(931, 575);
             this.EmployeesGridView.TabIndex = 3;
             // 
             // AddEmployeeButton
             // 
-            this.AddEmployeeButton.Location = new System.Drawing.Point(255, 603);
+            this.AddEmployeeButton.Location = new System.Drawing.Point(587, 603);
             this.AddEmployeeButton.Name = "AddEmployeeButton";
             this.AddEmployeeButton.Size = new System.Drawing.Size(100, 49);
             this.AddEmployeeButton.TabIndex = 9;
@@ -145,7 +145,7 @@
             // 
             // EditEmployeeButton
             // 
-            this.EditEmployeeButton.Location = new System.Drawing.Point(361, 603);
+            this.EditEmployeeButton.Location = new System.Drawing.Point(693, 603);
             this.EditEmployeeButton.Name = "EditEmployeeButton";
             this.EditEmployeeButton.Size = new System.Drawing.Size(128, 49);
             this.EditEmployeeButton.TabIndex = 10;
@@ -154,7 +154,7 @@
             // 
             // DeleteEmployeeButton
             // 
-            this.DeleteEmployeeButton.Location = new System.Drawing.Point(495, 602);
+            this.DeleteEmployeeButton.Location = new System.Drawing.Point(827, 602);
             this.DeleteEmployeeButton.Name = "DeleteEmployeeButton";
             this.DeleteEmployeeButton.Size = new System.Drawing.Size(97, 50);
             this.DeleteEmployeeButton.TabIndex = 11;
@@ -163,7 +163,7 @@
             // 
             // EditDepartmentButton
             // 
-            this.EditDepartmentButton.Location = new System.Drawing.Point(111, 191);
+            this.EditDepartmentButton.Location = new System.Drawing.Point(138, 191);
             this.EditDepartmentButton.Name = "EditDepartmentButton";
             this.EditDepartmentButton.Size = new System.Drawing.Size(127, 49);
             this.EditDepartmentButton.TabIndex = 7;
@@ -172,7 +172,7 @@
             // 
             // AddDepartmentButton
             // 
-            this.AddDepartmentButton.Location = new System.Drawing.Point(10, 190);
+            this.AddDepartmentButton.Location = new System.Drawing.Point(13, 190);
             this.AddDepartmentButton.Name = "AddDepartmentButton";
             this.AddDepartmentButton.Size = new System.Drawing.Size(94, 50);
             this.AddDepartmentButton.TabIndex = 6;
@@ -181,7 +181,7 @@
             // 
             // DeleteDepartmentButton
             // 
-            this.DeleteDepartmentButton.Location = new System.Drawing.Point(247, 191);
+            this.DeleteDepartmentButton.Location = new System.Drawing.Point(298, 191);
             this.DeleteDepartmentButton.Name = "DeleteDepartmentButton";
             this.DeleteDepartmentButton.Size = new System.Drawing.Size(90, 49);
             this.DeleteDepartmentButton.TabIndex = 8;
@@ -204,7 +204,7 @@
             this.DepartmentDetailsGridView.RowHeadersVisible = false;
             this.DepartmentDetailsGridView.RowHeadersWidth = 51;
             this.DepartmentDetailsGridView.RowTemplate.Height = 24;
-            this.DepartmentDetailsGridView.Size = new System.Drawing.Size(348, 163);
+            this.DepartmentDetailsGridView.Size = new System.Drawing.Size(401, 163);
             this.DepartmentDetailsGridView.TabIndex = 5;
             // 
             // DepartmentDetailsGroupBox
@@ -215,7 +215,7 @@
             this.DepartmentDetailsGroupBox.Controls.Add(this.AddDepartmentButton);
             this.DepartmentDetailsGroupBox.Location = new System.Drawing.Point(10, 445);
             this.DepartmentDetailsGroupBox.Name = "DepartmentDetailsGroupBox";
-            this.DepartmentDetailsGroupBox.Size = new System.Drawing.Size(350, 249);
+            this.DepartmentDetailsGroupBox.Size = new System.Drawing.Size(403, 249);
             this.DepartmentDetailsGroupBox.TabIndex = 12;
             this.DepartmentDetailsGroupBox.TabStop = false;
             this.DepartmentDetailsGroupBox.Text = "Информация об отделе";
@@ -226,9 +226,9 @@
             this.EmployeesGroupBox.Controls.Add(this.EditEmployeeButton);
             this.EmployeesGroupBox.Controls.Add(this.EmployeesGridView);
             this.EmployeesGroupBox.Controls.Add(this.DeleteEmployeeButton);
-            this.EmployeesGroupBox.Location = new System.Drawing.Point(379, 33);
+            this.EmployeesGroupBox.Location = new System.Drawing.Point(437, 33);
             this.EmployeesGroupBox.Name = "EmployeesGroupBox";
-            this.EmployeesGroupBox.Size = new System.Drawing.Size(604, 661);
+            this.EmployeesGroupBox.Size = new System.Drawing.Size(933, 661);
             this.EmployeesGroupBox.TabIndex = 13;
             this.EmployeesGroupBox.TabStop = false;
             this.EmployeesGroupBox.Text = "Сотрудники отдела";
@@ -237,7 +237,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(995, 699);
+            this.ClientSize = new System.Drawing.Size(1382, 699);
             this.Controls.Add(this.EmployeesGroupBox);
             this.Controls.Add(this.DepartmentDetailsGroupBox);
             this.Controls.Add(this.DepartmentsViewGroupBox);
