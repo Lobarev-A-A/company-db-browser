@@ -10,12 +10,14 @@ using System.Windows.Forms;
 
 namespace CompanyDBBrowser.App
 {
-    public partial class AddEmployeeForm : Form
+    public partial class EmployeeForm : Form
     {
-        public AddEmployeeForm(System.Data.Entity.DbSet<Department> departments)
+        public EmployeeForm(System.Data.Entity.DbSet<Department> departments, string caption)
         {
             InitializeComponent();
 
+            this.Text = caption;
+            
             // Инициализация списка отделов
             foreach (Department d in departments)
             {
@@ -25,7 +27,7 @@ namespace CompanyDBBrowser.App
             departmentComboBox.SelectedIndex = 0;
         }
 
-        private void AddEmployeeForm_Load(object sender, EventArgs e)
+        private void EmployeeForm_Load(object sender, EventArgs e)
         {
 
         }

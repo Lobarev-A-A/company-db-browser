@@ -1,6 +1,6 @@
 ﻿namespace CompanyDBBrowser.App
 {
-    partial class AddEmployeeForm
+    partial class EmployeeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -263,7 +263,7 @@
             this.markedFieldsAttentionLabel.TabIndex = 23;
             this.markedFieldsAttentionLabel.Text = "Поля, отмеченные звёздочкой (*), обязательны для заполнения";
             // 
-            // AddEmployeeForm
+            // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -292,10 +292,9 @@
             this.Controls.Add(this.firstNameLabel);
             this.Controls.Add(this.surnameLabel);
             this.Controls.Add(this.surnameTextBox);
-            this.Name = "AddEmployeeForm";
+            this.Name = "EmployeeForm";
             this.ShowIcon = false;
-            this.Text = "Новый сотрудник";
-            this.Load += new System.EventHandler(this.AddEmployeeForm_Load);
+            this.Load += new System.EventHandler(this.EmployeeForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

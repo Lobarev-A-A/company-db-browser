@@ -153,6 +153,7 @@
             this.EditEmployeeButton.TabIndex = 10;
             this.EditEmployeeButton.Text = "Редактировать сотрудника";
             this.EditEmployeeButton.UseVisualStyleBackColor = true;
+            this.EditEmployeeButton.Click += new System.EventHandler(this.EditEmployeeButton_Click);
             // 
             // DeleteEmployeeButton
             // 

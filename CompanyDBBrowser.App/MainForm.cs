@@ -44,7 +44,6 @@ namespace CompanyDBBrowser.App
             TreeViewRadioButton.Checked = true;
             DepartmentListBox.Visible = false;
             DepartmentTreeView.Visible = true;
-            AddEmployeeButton.Enabled = false;
 
             #region EmployeesGridView Header
             EmployeesGridView.ColumnCount = 11;
@@ -95,7 +94,6 @@ namespace CompanyDBBrowser.App
             Department selectedDepartment = (Department)DepartmentTreeView.SelectedNode.Tag;
             ShowDepartmentDetails(selectedDepartment);
             ShowDepartmentEmployees(selectedDepartment);
-            AddEmployeeButton.Enabled = true;
         }
         private void DepartmentListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -104,7 +102,6 @@ namespace CompanyDBBrowser.App
                 Department selectedDepartment = (Department)DepartmentListBox.SelectedItem;
                 ShowDepartmentDetails(selectedDepartment);
                 ShowDepartmentEmployees(selectedDepartment);
-                AddEmployeeButton.Enabled = true;
             }
         }
 
@@ -171,7 +168,7 @@ namespace CompanyDBBrowser.App
         {
             using (dataBase = new Model())
             {
-                AddEmployeeForm addEmployeeForm = new AddEmployeeForm(dataBase.Departments);
+                EmployeeForm addEmployeeForm = new EmployeeForm(dataBase.Departments, "Новый сотрудник");
 
                 // Валидация
                 bool correctValuesEntered = false;
@@ -212,6 +209,14 @@ namespace CompanyDBBrowser.App
 
                 dataBase.Employees.Add(newEmployee);
                 dataBase.SaveChanges();
+            }
+        }
+
+        private void EditEmployeeButton_Click(object sender, EventArgs e)
+        {
+            if (EmployeesGridView.SelectedRows.Count == 1)
+            {
+
             }
         }
     }
