@@ -36,20 +36,14 @@ namespace CompanyDBBrowser.App
                     // принимаемой за фирму целиком
                 }
 
-                // Инициализация DepartmentTreeView
-                DepartmentTreeView.Nodes.Add(TreeViewRecursiveInitialization(company.First(), departments));
-                
-                // Инициализация DepartmentListBox
-                foreach (var d in departments)
-                {
-                    DepartmentListBox.Items.Add(d);
-                }
+                ShowDepartmentsInTreeView(departments);
+                ShowDepartmentsInListBox(departments);
             }
 
             // Установка начального состояния элементов формы
             TreeViewRadioButton.Checked = true;
             DepartmentListBox.Visible = false;
-            DepartmentTreeView.Visible = true;
+            DepartmentTreeView.Visible = true;            
 
             #region EmployeesGridView Header
             EmployeesGridView.ColumnCount = 11;
@@ -156,6 +150,18 @@ namespace CompanyDBBrowser.App
                     EmployeesGridView.Rows.Add(row);
                 }
             }
+        }
+        private void ShowDepartmentsInListBox(System.Data.Entity.DbSet<Department> departments)
+        {
+            DepartmentListBox.Items.Clear();
+            foreach (var d in departments)
+                DepartmentListBox.Items.Add(d);
+            DepartmentListBox.Sorted = true;
+        }
+        private void ShowDepartmentsInTreeView(System.Data.Entity.DbSet<Department> departments)
+        {
+            // Не обработана ситуация, когда нет записи с ParentDepartmentID == null
+            DepartmentTreeView.Nodes.Add(TreeViewRecursiveInitialization(departments.Where(d => d.ParentDepartmentID == null).First(), departments));
         }
     }
 }
