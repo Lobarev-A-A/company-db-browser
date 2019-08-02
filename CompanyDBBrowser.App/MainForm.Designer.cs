@@ -131,6 +131,7 @@
             this.EmployeesGridView.RowHeadersVisible = false;
             this.EmployeesGridView.RowHeadersWidth = 51;
             this.EmployeesGridView.RowTemplate.Height = 24;
+            this.EmployeesGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.EmployeesGridView.Size = new System.Drawing.Size(931, 575);
             this.EmployeesGridView.TabIndex = 3;
             // 
@@ -142,6 +143,7 @@
             this.AddEmployeeButton.TabIndex = 9;
             this.AddEmployeeButton.Text = "Добавить сотрудника";
             this.AddEmployeeButton.UseVisualStyleBackColor = true;
+            this.AddEmployeeButton.Click += new System.EventHandler(this.AddEmployeeButton_Click);
             // 
             // EditEmployeeButton
             // 

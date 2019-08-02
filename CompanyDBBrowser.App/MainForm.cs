@@ -43,7 +43,8 @@ namespace CompanyDBBrowser.App
             // Установка начального состояния элементов формы
             TreeViewRadioButton.Checked = true;
             DepartmentListBox.Visible = false;
-            DepartmentTreeView.Visible = true;            
+            DepartmentTreeView.Visible = true;
+            AddEmployeeButton.Enabled = false;
 
             #region EmployeesGridView Header
             EmployeesGridView.ColumnCount = 11;
@@ -94,6 +95,7 @@ namespace CompanyDBBrowser.App
             Department selectedDepartment = (Department)DepartmentTreeView.SelectedNode.Tag;
             ShowDepartmentDetails(selectedDepartment);
             ShowDepartmentEmployees(selectedDepartment);
+            AddEmployeeButton.Enabled = true;
         }
         private void DepartmentListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -102,6 +104,7 @@ namespace CompanyDBBrowser.App
                 Department selectedDepartment = (Department)DepartmentListBox.SelectedItem;
                 ShowDepartmentDetails(selectedDepartment);
                 ShowDepartmentEmployees(selectedDepartment);
+                AddEmployeeButton.Enabled = true;
             }
         }
 
@@ -162,6 +165,18 @@ namespace CompanyDBBrowser.App
         {
             // Не обработана ситуация, когда нет записи с ParentDepartmentID == null
             DepartmentTreeView.Nodes.Add(TreeViewRecursiveInitialization(departments.Where(d => d.ParentDepartmentID == null).First(), departments));
+        }
+
+        private void AddEmployeeButton_Click(object sender, EventArgs e)
+        {
+            using (dataBase = new Model())
+            {
+                AddEmployeeForm addEmployeeForm = new AddEmployeeForm(dataBase.Departments);
+                DialogResult dialogResult = addEmployeeForm.ShowDialog(this);
+
+                if (dialogResult == DialogResult.Cancel)
+                    return;
+            }
         }
     }
 }
