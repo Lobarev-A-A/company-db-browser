@@ -141,8 +141,8 @@ namespace CompanyDBBrowser.App
         {
             using (dataBase = new Model())
             {
-                dataBase.Departments.Attach(selectedDepartment);
-                EmployeesGridView.Rows.Clear();                
+                dataBase.Departments.Attach(selectedDepartment);                
+                EmployeesGridView.Rows.Clear();
 
                 foreach (Employee employee in selectedDepartment.Employees)
                 {
@@ -172,10 +172,46 @@ namespace CompanyDBBrowser.App
             using (dataBase = new Model())
             {
                 AddEmployeeForm addEmployeeForm = new AddEmployeeForm(dataBase.Departments);
-                DialogResult dialogResult = addEmployeeForm.ShowDialog(this);
 
-                if (dialogResult == DialogResult.Cancel)
-                    return;
+                // Валидация
+                bool correctValuesEntered = false;
+                while (correctValuesEntered == false)
+                {
+                    DialogResult dialogResult = addEmployeeForm.ShowDialog(this);
+
+                    if (dialogResult == DialogResult.Cancel)
+                        return;
+                    correctValuesEntered = true;
+                    if (addEmployeeForm.surnameTextBox.Text == "")
+                    {
+                        MessageBox.Show("Поле \"Фамилия\" должно быть заполнено!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        correctValuesEntered = false;
+                    }
+                    if (addEmployeeForm.firstNameTextBox.Text == "")
+                    {
+                        MessageBox.Show("Поле \"Имя\" должно быть заполнено!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        correctValuesEntered = false;
+                    }
+                    if (addEmployeeForm.positionTextBox.Text == "")
+                    {
+                        MessageBox.Show("Поле \"Должность\" должно быть заполнено!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        correctValuesEntered = false;
+                    }
+                }
+
+                Employee newEmployee = new Employee();
+                newEmployee.SurName = addEmployeeForm.surnameTextBox.Text;
+                newEmployee.FirstName = addEmployeeForm.firstNameTextBox.Text;
+                newEmployee.Patronymic = addEmployeeForm.patronymicTextBox.Text;
+                newEmployee.DateOfBirth = addEmployeeForm.dateOfBirthDateTimePicker.Value;
+                newEmployee.DocSeries = addEmployeeForm.docSeriesTextBox.Text;
+                newEmployee.DocNumber = addEmployeeForm.docNumberTextBox.Text;
+                newEmployee.Position = addEmployeeForm.positionTextBox.Text;
+                Department selectedDepartment = (Department)addEmployeeForm.departmentComboBox.SelectedItem;
+                newEmployee.DepartmentID = selectedDepartment.ID;
+
+                dataBase.Employees.Add(newEmployee);
+                dataBase.SaveChanges();
             }
         }
     }

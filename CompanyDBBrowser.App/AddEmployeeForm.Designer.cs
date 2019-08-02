@@ -177,6 +177,7 @@
             // 
             // departmentComboBox
             // 
+            this.departmentComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.departmentComboBox.FormattingEnabled = true;
             this.departmentComboBox.Location = new System.Drawing.Point(158, 338);
             this.departmentComboBox.Name = "departmentComboBox";
@@ -316,7 +317,6 @@
         private System.Windows.Forms.Label obligatoryFieldMarkerLabel3;
         private System.Windows.Forms.Label obligatoryFieldMarkerLabel4;
         private System.Windows.Forms.Label obligatoryFieldMarkerLabel5;
-        protected internal System.Windows.Forms.TextBox surnameTextBox;
         protected internal System.Windows.Forms.TextBox firstNameTextBox;
         protected internal System.Windows.Forms.TextBox patronymicTextBox;
         protected internal System.Windows.Forms.DateTimePicker dateOfBirthDateTimePicker;
@@ -325,5 +325,6 @@
         protected internal System.Windows.Forms.TextBox positionTextBox;
         protected internal System.Windows.Forms.ComboBox departmentComboBox;
         private System.Windows.Forms.Label markedFieldsAttentionLabel;
+        protected internal System.Windows.Forms.TextBox surnameTextBox;
     }
 }
