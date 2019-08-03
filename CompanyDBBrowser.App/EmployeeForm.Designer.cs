@@ -52,11 +52,17 @@
             this.obligatoryFieldMarkerLabel4 = new System.Windows.Forms.Label();
             this.obligatoryFieldMarkerLabel5 = new System.Windows.Forms.Label();
             this.markedFieldsAttentionLabel = new System.Windows.Forms.Label();
+            this.fieldLengthAttentionLabel1 = new System.Windows.Forms.Label();
+            this.fieldLengthAttentionLabel2 = new System.Windows.Forms.Label();
+            this.fieldLengthAttentionLabel3 = new System.Windows.Forms.Label();
+            this.fieldLengthAttentionLabel4 = new System.Windows.Forms.Label();
+            this.fieldLengthAttentionLabel5 = new System.Windows.Forms.Label();
+            this.fieldLengthAttentionLabel6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // surnameTextBox
             // 
-            this.surnameTextBox.Location = new System.Drawing.Point(158, 30);
+            this.surnameTextBox.Location = new System.Drawing.Point(318, 30);
             this.surnameTextBox.Name = "surnameTextBox";
             this.surnameTextBox.Size = new System.Drawing.Size(309, 22);
             this.surnameTextBox.TabIndex = 0;
@@ -135,42 +141,42 @@
             // 
             // firstNameTextBox
             // 
-            this.firstNameTextBox.Location = new System.Drawing.Point(158, 74);
+            this.firstNameTextBox.Location = new System.Drawing.Point(318, 74);
             this.firstNameTextBox.Name = "firstNameTextBox";
             this.firstNameTextBox.Size = new System.Drawing.Size(309, 22);
             this.firstNameTextBox.TabIndex = 9;
             // 
             // patronymicTextBox
             // 
-            this.patronymicTextBox.Location = new System.Drawing.Point(158, 118);
+            this.patronymicTextBox.Location = new System.Drawing.Point(318, 118);
             this.patronymicTextBox.Name = "patronymicTextBox";
             this.patronymicTextBox.Size = new System.Drawing.Size(309, 22);
             this.patronymicTextBox.TabIndex = 10;
             // 
             // dateOfBirthDateTimePicker
             // 
-            this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(158, 162);
+            this.dateOfBirthDateTimePicker.Location = new System.Drawing.Point(318, 162);
             this.dateOfBirthDateTimePicker.Name = "dateOfBirthDateTimePicker";
             this.dateOfBirthDateTimePicker.Size = new System.Drawing.Size(309, 22);
             this.dateOfBirthDateTimePicker.TabIndex = 11;
             // 
             // docSeriesTextBox
             // 
-            this.docSeriesTextBox.Location = new System.Drawing.Point(158, 206);
+            this.docSeriesTextBox.Location = new System.Drawing.Point(318, 206);
             this.docSeriesTextBox.Name = "docSeriesTextBox";
             this.docSeriesTextBox.Size = new System.Drawing.Size(309, 22);
             this.docSeriesTextBox.TabIndex = 12;
             // 
             // docNumberTextBox
             // 
-            this.docNumberTextBox.Location = new System.Drawing.Point(158, 250);
+            this.docNumberTextBox.Location = new System.Drawing.Point(318, 250);
             this.docNumberTextBox.Name = "docNumberTextBox";
             this.docNumberTextBox.Size = new System.Drawing.Size(309, 22);
             this.docNumberTextBox.TabIndex = 13;
             // 
             // positionTextBox
             // 
-            this.positionTextBox.Location = new System.Drawing.Point(158, 294);
+            this.positionTextBox.Location = new System.Drawing.Point(318, 294);
             this.positionTextBox.Name = "positionTextBox";
             this.positionTextBox.Size = new System.Drawing.Size(309, 22);
             this.positionTextBox.TabIndex = 14;
@@ -179,7 +185,7 @@
             // 
             this.departmentComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.departmentComboBox.FormattingEnabled = true;
-            this.departmentComboBox.Location = new System.Drawing.Point(158, 338);
+            this.departmentComboBox.Location = new System.Drawing.Point(318, 338);
             this.departmentComboBox.Name = "departmentComboBox";
             this.departmentComboBox.Size = new System.Drawing.Size(309, 24);
             this.departmentComboBox.TabIndex = 15;
@@ -187,7 +193,7 @@
             // addEmployeeConfirmButton
             // 
             this.addEmployeeConfirmButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.addEmployeeConfirmButton.Location = new System.Drawing.Point(277, 412);
+            this.addEmployeeConfirmButton.Location = new System.Drawing.Point(437, 412);
             this.addEmployeeConfirmButton.Name = "addEmployeeConfirmButton";
             this.addEmployeeConfirmButton.Size = new System.Drawing.Size(93, 28);
             this.addEmployeeConfirmButton.TabIndex = 16;
@@ -197,7 +203,7 @@
             // addEmployeeCancelButton
             // 
             this.addEmployeeCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.addEmployeeCancelButton.Location = new System.Drawing.Point(374, 412);
+            this.addEmployeeCancelButton.Location = new System.Drawing.Point(534, 412);
             this.addEmployeeCancelButton.Name = "addEmployeeCancelButton";
             this.addEmployeeCancelButton.Size = new System.Drawing.Size(93, 28);
             this.addEmployeeCancelButton.TabIndex = 17;
@@ -208,7 +214,7 @@
             // 
             this.obligatoryFieldMarkerLabel1.AutoSize = true;
             this.obligatoryFieldMarkerLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.obligatoryFieldMarkerLabel1.Location = new System.Drawing.Point(469, 29);
+            this.obligatoryFieldMarkerLabel1.Location = new System.Drawing.Point(629, 29);
             this.obligatoryFieldMarkerLabel1.Name = "obligatoryFieldMarkerLabel1";
             this.obligatoryFieldMarkerLabel1.Size = new System.Drawing.Size(20, 25);
             this.obligatoryFieldMarkerLabel1.TabIndex = 18;
@@ -218,7 +224,7 @@
             // 
             this.obligatoryFieldMarkerLabel2.AutoSize = true;
             this.obligatoryFieldMarkerLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.obligatoryFieldMarkerLabel2.Location = new System.Drawing.Point(469, 73);
+            this.obligatoryFieldMarkerLabel2.Location = new System.Drawing.Point(629, 73);
             this.obligatoryFieldMarkerLabel2.Name = "obligatoryFieldMarkerLabel2";
             this.obligatoryFieldMarkerLabel2.Size = new System.Drawing.Size(20, 25);
             this.obligatoryFieldMarkerLabel2.TabIndex = 19;
@@ -228,7 +234,7 @@
             // 
             this.obligatoryFieldMarkerLabel3.AutoSize = true;
             this.obligatoryFieldMarkerLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.obligatoryFieldMarkerLabel3.Location = new System.Drawing.Point(469, 161);
+            this.obligatoryFieldMarkerLabel3.Location = new System.Drawing.Point(629, 161);
             this.obligatoryFieldMarkerLabel3.Name = "obligatoryFieldMarkerLabel3";
             this.obligatoryFieldMarkerLabel3.Size = new System.Drawing.Size(20, 25);
             this.obligatoryFieldMarkerLabel3.TabIndex = 20;
@@ -238,7 +244,7 @@
             // 
             this.obligatoryFieldMarkerLabel4.AutoSize = true;
             this.obligatoryFieldMarkerLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.obligatoryFieldMarkerLabel4.Location = new System.Drawing.Point(469, 293);
+            this.obligatoryFieldMarkerLabel4.Location = new System.Drawing.Point(629, 293);
             this.obligatoryFieldMarkerLabel4.Name = "obligatoryFieldMarkerLabel4";
             this.obligatoryFieldMarkerLabel4.Size = new System.Drawing.Size(20, 25);
             this.obligatoryFieldMarkerLabel4.TabIndex = 21;
@@ -248,7 +254,7 @@
             // 
             this.obligatoryFieldMarkerLabel5.AutoSize = true;
             this.obligatoryFieldMarkerLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.obligatoryFieldMarkerLabel5.Location = new System.Drawing.Point(469, 338);
+            this.obligatoryFieldMarkerLabel5.Location = new System.Drawing.Point(629, 338);
             this.obligatoryFieldMarkerLabel5.Name = "obligatoryFieldMarkerLabel5";
             this.obligatoryFieldMarkerLabel5.Size = new System.Drawing.Size(20, 25);
             this.obligatoryFieldMarkerLabel5.TabIndex = 22;
@@ -257,17 +263,90 @@
             // markedFieldsAttentionLabel
             // 
             this.markedFieldsAttentionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.markedFieldsAttentionLabel.ForeColor = System.Drawing.SystemColors.GrayText;
             this.markedFieldsAttentionLabel.Location = new System.Drawing.Point(20, 377);
             this.markedFieldsAttentionLabel.Name = "markedFieldsAttentionLabel";
             this.markedFieldsAttentionLabel.Size = new System.Drawing.Size(447, 25);
             this.markedFieldsAttentionLabel.TabIndex = 23;
             this.markedFieldsAttentionLabel.Text = "Поля, отмеченные звёздочкой (*), обязательны для заполнения";
             // 
+            // fieldLengthAttentionLabel1
+            // 
+            this.fieldLengthAttentionLabel1.AutoSize = true;
+            this.fieldLengthAttentionLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.fieldLengthAttentionLabel1.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.fieldLengthAttentionLabel1.Location = new System.Drawing.Point(98, 34);
+            this.fieldLengthAttentionLabel1.Name = "fieldLengthAttentionLabel1";
+            this.fieldLengthAttentionLabel1.Size = new System.Drawing.Size(136, 15);
+            this.fieldLengthAttentionLabel1.TabIndex = 24;
+            this.fieldLengthAttentionLabel1.Text = "не более 50 символов";
+            // 
+            // fieldLengthAttentionLabel2
+            // 
+            this.fieldLengthAttentionLabel2.AutoSize = true;
+            this.fieldLengthAttentionLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.fieldLengthAttentionLabel2.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.fieldLengthAttentionLabel2.Location = new System.Drawing.Point(63, 78);
+            this.fieldLengthAttentionLabel2.Name = "fieldLengthAttentionLabel2";
+            this.fieldLengthAttentionLabel2.Size = new System.Drawing.Size(136, 15);
+            this.fieldLengthAttentionLabel2.TabIndex = 25;
+            this.fieldLengthAttentionLabel2.Text = "не более 50 символов";
+            // 
+            // fieldLengthAttentionLabel3
+            // 
+            this.fieldLengthAttentionLabel3.AutoSize = true;
+            this.fieldLengthAttentionLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.fieldLengthAttentionLabel3.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.fieldLengthAttentionLabel3.Location = new System.Drawing.Point(99, 122);
+            this.fieldLengthAttentionLabel3.Name = "fieldLengthAttentionLabel3";
+            this.fieldLengthAttentionLabel3.Size = new System.Drawing.Size(136, 15);
+            this.fieldLengthAttentionLabel3.TabIndex = 26;
+            this.fieldLengthAttentionLabel3.Text = "не более 50 символов";
+            // 
+            // fieldLengthAttentionLabel4
+            // 
+            this.fieldLengthAttentionLabel4.AutoSize = true;
+            this.fieldLengthAttentionLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.fieldLengthAttentionLabel4.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.fieldLengthAttentionLabel4.Location = new System.Drawing.Point(151, 210);
+            this.fieldLengthAttentionLabel4.Name = "fieldLengthAttentionLabel4";
+            this.fieldLengthAttentionLabel4.Size = new System.Drawing.Size(129, 15);
+            this.fieldLengthAttentionLabel4.TabIndex = 27;
+            this.fieldLengthAttentionLabel4.Text = "не более 4 символов";
+            // 
+            // fieldLengthAttentionLabel5
+            // 
+            this.fieldLengthAttentionLabel5.AutoSize = true;
+            this.fieldLengthAttentionLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.fieldLengthAttentionLabel5.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.fieldLengthAttentionLabel5.Location = new System.Drawing.Point(153, 254);
+            this.fieldLengthAttentionLabel5.Name = "fieldLengthAttentionLabel5";
+            this.fieldLengthAttentionLabel5.Size = new System.Drawing.Size(129, 15);
+            this.fieldLengthAttentionLabel5.TabIndex = 28;
+            this.fieldLengthAttentionLabel5.Text = "не более 6 символов";
+            // 
+            // fieldLengthAttentionLabel6
+            // 
+            this.fieldLengthAttentionLabel6.AutoSize = true;
+            this.fieldLengthAttentionLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.fieldLengthAttentionLabel6.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.fieldLengthAttentionLabel6.Location = new System.Drawing.Point(109, 297);
+            this.fieldLengthAttentionLabel6.Name = "fieldLengthAttentionLabel6";
+            this.fieldLengthAttentionLabel6.Size = new System.Drawing.Size(136, 15);
+            this.fieldLengthAttentionLabel6.TabIndex = 0;
+            this.fieldLengthAttentionLabel6.Text = "не более 50 символов";
+            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(499, 458);
+            this.ClientSize = new System.Drawing.Size(657, 458);
+            this.Controls.Add(this.fieldLengthAttentionLabel6);
+            this.Controls.Add(this.fieldLengthAttentionLabel5);
+            this.Controls.Add(this.fieldLengthAttentionLabel4);
+            this.Controls.Add(this.fieldLengthAttentionLabel3);
+            this.Controls.Add(this.fieldLengthAttentionLabel2);
+            this.Controls.Add(this.fieldLengthAttentionLabel1);
             this.Controls.Add(this.markedFieldsAttentionLabel);
             this.Controls.Add(this.obligatoryFieldMarkerLabel5);
             this.Controls.Add(this.obligatoryFieldMarkerLabel4);
@@ -325,5 +404,11 @@
         protected internal System.Windows.Forms.ComboBox departmentComboBox;
         private System.Windows.Forms.Label markedFieldsAttentionLabel;
         protected internal System.Windows.Forms.TextBox surnameTextBox;
+        private System.Windows.Forms.Label fieldLengthAttentionLabel1;
+        private System.Windows.Forms.Label fieldLengthAttentionLabel2;
+        private System.Windows.Forms.Label fieldLengthAttentionLabel3;
+        private System.Windows.Forms.Label fieldLengthAttentionLabel4;
+        private System.Windows.Forms.Label fieldLengthAttentionLabel5;
+        private System.Windows.Forms.Label fieldLengthAttentionLabel6;
     }
 }

@@ -180,6 +180,7 @@ namespace CompanyDBBrowser.App
                 if (dialogResult == DialogResult.Cancel)
                     return;
                 correctValuesEntered = true;
+                // Обязательные поля
                 if (addEmployeeForm.surnameTextBox.Text == "")
                 {
                     MessageBox.Show("Поле \"Фамилия\" должно быть заполнено!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -193,6 +194,37 @@ namespace CompanyDBBrowser.App
                 if (addEmployeeForm.positionTextBox.Text == "")
                 {
                     MessageBox.Show("Поле \"Должность\" должно быть заполнено!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+                // Длина строки
+                if (addEmployeeForm.surnameTextBox.Text.Length > 50)
+                {
+                    MessageBox.Show("Поле \"Фамилия\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+                if (addEmployeeForm.firstNameTextBox.Text.Length > 50)
+                {
+                    MessageBox.Show("Поле \"Имя\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+                if (addEmployeeForm.patronymicTextBox.Text.Length > 50)
+                {
+                    MessageBox.Show("Поле \"Отчество\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+                if (addEmployeeForm.docSeriesTextBox.Text.Length > 4)
+                {
+                    MessageBox.Show("Поле \"Серия документа\" должно содержать не более 4 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+                if (addEmployeeForm.docNumberTextBox.Text.Length > 6)
+                {
+                    MessageBox.Show("Поле \"Номер документа\" должно содержать не более 6 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+                if (addEmployeeForm.positionTextBox.Text.Length > 50)
+                {
+                    MessageBox.Show("Поле \"Должность\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     correctValuesEntered = false;
                 }
             }
