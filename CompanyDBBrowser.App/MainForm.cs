@@ -40,7 +40,7 @@ namespace CompanyDBBrowser.App
             ShowDepartmentsInTreeView(departments);
             ShowDepartmentsInListBox(departments);
 
-            // Установка начального состояния элементов формы
+            #region Set default condition of form elements
             AddDepartmentButton.Enabled = false;
             EditDepartmentButton.Enabled = false;
             removeDepartmentButton.Enabled = false;
@@ -49,6 +49,7 @@ namespace CompanyDBBrowser.App
             DepartmentListBox.Visible = false;
             DepartmentTreeView.Visible = true;
             EditEmployeeButton.Enabled = false;
+            #endregion
 
             #region EmployeesGridView Header
             EmployeesGridView.ColumnCount = 11;
@@ -99,6 +100,7 @@ namespace CompanyDBBrowser.App
             Department selectedDepartment = (Department)DepartmentTreeView.SelectedNode.Tag;
             ShowDepartmentDetails(selectedDepartment);
             ShowDepartmentEmployees(selectedDepartment);
+            EditEmployeeButton.Enabled = true;
         }
         private void DepartmentListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -107,6 +109,7 @@ namespace CompanyDBBrowser.App
                 Department selectedDepartment = (Department)DepartmentListBox.SelectedItem;
                 ShowDepartmentDetails(selectedDepartment);
                 ShowDepartmentEmployees(selectedDepartment);
+                EditEmployeeButton.Enabled = true;
             }
         }
 
@@ -147,14 +150,14 @@ namespace CompanyDBBrowser.App
                 EmployeesGridView.Rows.Add(row);
             }
         }
-        private void ShowDepartmentsInListBox(System.Data.Entity.DbSet<Department> departments)
+        private void ShowDepartmentsInListBox(DbSet<Department> departments)
         {
             DepartmentListBox.Items.Clear();
             foreach (var d in departments)
                 DepartmentListBox.Items.Add(d);
             DepartmentListBox.Sorted = true;
         }
-        private void ShowDepartmentsInTreeView(System.Data.Entity.DbSet<Department> departments)
+        private void ShowDepartmentsInTreeView(DbSet<Department> departments)
         {
             // Не обработана ситуация, когда нет записи с ParentDepartmentID == null
             DepartmentTreeView.Nodes.Add(TreeViewRecursiveInitialization(departments.Where(d => d.ParentDepartmentID == null).First(), departments));
@@ -171,7 +174,7 @@ namespace CompanyDBBrowser.App
 
             EmployeeForm addEmployeeForm = new EmployeeForm(dataBase.Departments, selectedDepartment, "Новый сотрудник");
 
-            // Валидация
+            #region Validation
             bool correctValuesEntered = false;
             while (correctValuesEntered == false)
             {
@@ -228,6 +231,7 @@ namespace CompanyDBBrowser.App
                     correctValuesEntered = false;
                 }
             }
+            #endregion
 
             Employee newEmployee = new Employee();
             newEmployee.SurName = addEmployeeForm.surnameTextBox.Text;
@@ -250,10 +254,95 @@ namespace CompanyDBBrowser.App
 
         private void EditEmployeeButton_Click(object sender, EventArgs e)
         {
-            if (EmployeesGridView.SelectedRows.Count == 1)
-            {
+            int rowIndex = EmployeesGridView.SelectedRows[0].Index;
+            string selectedEmployeeID = EmployeesGridView[0, rowIndex].Value.ToString();
+            string selectedDepartmentID = EmployeesGridView[10, rowIndex].Value.ToString();
+            Department selectedDepartment = dataBase.Departments.Where(d => d.ID.ToString() == selectedDepartmentID).First();
+            Employee employee = dataBase.Employees.Where(emp => emp.ID.ToString() == selectedEmployeeID).First();
 
+            EmployeeForm editEmployeeForm = new EmployeeForm(dataBase.Departments, selectedDepartment, "Редактирование данных сотрудника");
+
+            editEmployeeForm.surnameTextBox.Text = employee.SurName;
+            editEmployeeForm.firstNameTextBox.Text = employee.FirstName;
+            editEmployeeForm.patronymicTextBox.Text = employee.Patronymic;
+            editEmployeeForm.dateOfBirthDateTimePicker.Value = employee.DateOfBirth;
+            editEmployeeForm.docSeriesTextBox.Text = employee.DocSeries;
+            editEmployeeForm.docNumberTextBox.Text = employee.DocNumber;
+            editEmployeeForm.positionTextBox.Text = employee.Position;
+
+            #region Validation
+            bool correctValuesEntered = false;
+            while (correctValuesEntered == false)
+            {
+                DialogResult dialogResult = editEmployeeForm.ShowDialog(this);
+
+                if (dialogResult == DialogResult.Cancel)
+                    return;
+                correctValuesEntered = true;
+                // Обязательные поля
+                if (editEmployeeForm.surnameTextBox.Text == "")
+                {
+                    MessageBox.Show("Поле \"Фамилия\" должно быть заполнено!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+                if (editEmployeeForm.firstNameTextBox.Text == "")
+                {
+                    MessageBox.Show("Поле \"Имя\" должно быть заполнено!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+                if (editEmployeeForm.positionTextBox.Text == "")
+                {
+                    MessageBox.Show("Поле \"Должность\" должно быть заполнено!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+                // Длина строки
+                if (editEmployeeForm.surnameTextBox.Text.Length > 50)
+                {
+                    MessageBox.Show("Поле \"Фамилия\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+                if (editEmployeeForm.firstNameTextBox.Text.Length > 50)
+                {
+                    MessageBox.Show("Поле \"Имя\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+                if (editEmployeeForm.patronymicTextBox.Text.Length > 50)
+                {
+                    MessageBox.Show("Поле \"Отчество\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+                if (editEmployeeForm.docSeriesTextBox.Text.Length > 4)
+                {
+                    MessageBox.Show("Поле \"Серия документа\" должно содержать не более 4 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+                if (editEmployeeForm.docNumberTextBox.Text.Length > 6)
+                {
+                    MessageBox.Show("Поле \"Номер документа\" должно содержать не более 6 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+                if (editEmployeeForm.positionTextBox.Text.Length > 50)
+                {
+                    MessageBox.Show("Поле \"Должность\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
             }
+            #endregion
+
+            employee.SurName = editEmployeeForm.surnameTextBox.Text;
+            employee.FirstName = editEmployeeForm.firstNameTextBox.Text;
+            employee.Patronymic = editEmployeeForm.patronymicTextBox.Text;
+            employee.DateOfBirth = editEmployeeForm.dateOfBirthDateTimePicker.Value;
+            employee.DocSeries = editEmployeeForm.docSeriesTextBox.Text;
+            employee.DocNumber = editEmployeeForm.docNumberTextBox.Text;
+            employee.Position = editEmployeeForm.positionTextBox.Text;
+            Department selectedInAddFormDepartment = (Department)editEmployeeForm.departmentComboBox.SelectedItem;
+            employee.DepartmentID = selectedInAddFormDepartment.ID;
+
+            dataBase.SaveChanges();
+            // Обновление отображаемого списка сотрудников
+            if (selectedDepartment != null)
+                ShowDepartmentEmployees(selectedDepartment);
         }
     }
 }
