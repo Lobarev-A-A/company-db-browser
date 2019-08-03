@@ -116,6 +116,7 @@ namespace CompanyDBBrowser.App
             {
                 new string[] { "ID", selectedDepartment.ID.ToString() },
                 new string[] { "Название", selectedDepartment.Name },
+                new string[] { "Код", selectedDepartment.Code },
                 // new string[] { "Количество сотрудниов", selectedDepartment.Employees.Count.ToString() },
                 new string[] { "Родительский отдел", parentDepartmentName },
                 new string[] { "ID родительского отдела", selectedDepartment.ParentDepartmentID.ToString() }
