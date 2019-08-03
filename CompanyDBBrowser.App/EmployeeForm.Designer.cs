@@ -371,6 +371,9 @@
             this.Controls.Add(this.firstNameLabel);
             this.Controls.Add(this.surnameLabel);
             this.Controls.Add(this.surnameTextBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EmployeeForm";
             this.ShowIcon = false;
             this.Load += new System.EventHandler(this.EmployeeForm_Load);

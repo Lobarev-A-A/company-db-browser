@@ -246,6 +246,9 @@
             this.Controls.Add(this.departmentDetailsGroupBox);
             this.Controls.Add(this.departmentsViewGroupBox);
             this.Controls.Add(this.companyNameLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
             this.Text = "CompanyDBBrowser";
             this.departmentsViewGroupBox.ResumeLayout(false);
