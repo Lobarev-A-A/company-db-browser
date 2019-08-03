@@ -29,7 +29,7 @@ namespace CompanyDBBrowser.App
             var company = departments.Where(d => d.ParentDepartmentID == null);
             if (company.Count() == 1)
             {
-                CompanyNameLabel.Text = company.First().Name;
+                companyNameLabel.Text = company.First().Name;
             }
             else
             {
@@ -41,29 +41,29 @@ namespace CompanyDBBrowser.App
             ShowDepartmentsInListBox(departments);
 
             #region Set default condition of form elements
-            AddDepartmentButton.Enabled = false;
-            EditDepartmentButton.Enabled = false;
+            addDepartmentButton.Enabled = false;
+            editDepartmentButton.Enabled = false;
             removeDepartmentButton.Enabled = false;
-            TreeViewRadioButton.Checked = true;
-            DepartmentListBox.Visible = false;
-            DepartmentTreeView.Visible = true;
-            EditEmployeeButton.Enabled = false;
+            treeViewRadioButton.Checked = true;
+            departmentListBox.Visible = false;
+            departmentTreeView.Visible = true;
+            editEmployeeButton.Enabled = false;
             removeEmployeeButton.Enabled = false;
             #endregion
 
             #region EmployeesGridView Header
-            EmployeesGridView.ColumnCount = 11;
-            EmployeesGridView.Columns[0].Name = "ID";
-            EmployeesGridView.Columns[1].Name = "Фамилия";
-            EmployeesGridView.Columns[2].Name = "Имя";
-            EmployeesGridView.Columns[3].Name = "Отчество";
-            EmployeesGridView.Columns[4].Name = "Дата рождения";
-            EmployeesGridView.Columns[5].Name = "Возраст";
-            EmployeesGridView.Columns[6].Name = "Серия документа";
-            EmployeesGridView.Columns[7].Name = "Номер документа";
-            EmployeesGridView.Columns[8].Name = "Отдел";
-            EmployeesGridView.Columns[9].Name = "Должность";
-            EmployeesGridView.Columns[10].Name = "ID отдела";
+            employeesGridView.ColumnCount = 11;
+            employeesGridView.Columns[0].Name = "ID";
+            employeesGridView.Columns[1].Name = "Фамилия";
+            employeesGridView.Columns[2].Name = "Имя";
+            employeesGridView.Columns[3].Name = "Отчество";
+            employeesGridView.Columns[4].Name = "Дата рождения";
+            employeesGridView.Columns[5].Name = "Возраст";
+            employeesGridView.Columns[6].Name = "Серия документа";
+            employeesGridView.Columns[7].Name = "Номер документа";
+            employeesGridView.Columns[8].Name = "Отдел";
+            employeesGridView.Columns[9].Name = "Должность";
+            employeesGridView.Columns[10].Name = "ID отдела";
             #endregion
         }
 
@@ -86,31 +86,31 @@ namespace CompanyDBBrowser.App
 
         private void TreeViewRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            DepartmentListBox.Visible = false;
-            DepartmentTreeView.Visible = true;
+            departmentListBox.Visible = false;
+            departmentTreeView.Visible = true;
         }
         private void ListViewRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            DepartmentListBox.Visible = true;
-            DepartmentTreeView.Visible = false;
+            departmentListBox.Visible = true;
+            departmentTreeView.Visible = false;
         }
 
         private void DepartmentTreeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            Department selectedDepartment = (Department)DepartmentTreeView.SelectedNode.Tag;
+            Department selectedDepartment = (Department)departmentTreeView.SelectedNode.Tag;
             ShowDepartmentDetails(selectedDepartment);
             ShowDepartmentEmployees(selectedDepartment);
-            EditEmployeeButton.Enabled = true;
+            editEmployeeButton.Enabled = true;
             removeEmployeeButton.Enabled = true;
         }
         private void DepartmentListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (DepartmentListBox.SelectedIndex != -1)
+            if (departmentListBox.SelectedIndex != -1)
             {
-                Department selectedDepartment = (Department)DepartmentListBox.SelectedItem;
+                Department selectedDepartment = (Department)departmentListBox.SelectedItem;
                 ShowDepartmentDetails(selectedDepartment);
                 ShowDepartmentEmployees(selectedDepartment);
-                EditEmployeeButton.Enabled = true;
+                editEmployeeButton.Enabled = true;
                 removeEmployeeButton.Enabled = true;
             }
         }
@@ -131,17 +131,17 @@ namespace CompanyDBBrowser.App
                 new string[] { "ID родительского отдела", selectedDepartment.ParentDepartmentID.ToString() }
             };
 
-            DepartmentDetailsGridView.Rows.Clear();
-            DepartmentDetailsGridView.ColumnCount = 2;
+            departmentDetailsGridView.Rows.Clear();
+            departmentDetailsGridView.ColumnCount = 2;
 
             foreach (string[] row in rows)
             {
-                DepartmentDetailsGridView.Rows.Add(row);
+                departmentDetailsGridView.Rows.Add(row);
             }
         }
         private void ShowDepartmentEmployees(Department selectedDepartment)
         {
-            EmployeesGridView.Rows.Clear();
+            employeesGridView.Rows.Clear();
 
             foreach (Employee employee in selectedDepartment.Employees)
             {
@@ -149,30 +149,30 @@ namespace CompanyDBBrowser.App
                                      employee.DateOfBirth.ToString("d", culture), "Age", employee.DocSeries, employee.DocNumber,
                                      employee.Department.Name, employee.Position, employee.DepartmentID.ToString()};
 
-                EmployeesGridView.Rows.Add(row);
+                employeesGridView.Rows.Add(row);
             }
         }
         private void ShowDepartmentsInListBox(DbSet<Department> departments)
         {
-            DepartmentListBox.Items.Clear();
+            departmentListBox.Items.Clear();
             foreach (var d in departments)
-                DepartmentListBox.Items.Add(d);
-            DepartmentListBox.Sorted = true;
+                departmentListBox.Items.Add(d);
+            departmentListBox.Sorted = true;
         }
         private void ShowDepartmentsInTreeView(DbSet<Department> departments)
         {
             // Не обработана ситуация, когда нет записи с ParentDepartmentID == null
-            DepartmentTreeView.Nodes.Add(TreeViewRecursiveInitialization(departments.Where(d => d.ParentDepartmentID == null).First(), departments));
+            departmentTreeView.Nodes.Add(TreeViewRecursiveInitialization(departments.Where(d => d.ParentDepartmentID == null).First(), departments));
         }
 
         private void AddEmployeeButton_Click(object sender, EventArgs e)
         {
             // Определение выбранного отдела
             Department selectedDepartment;
-            if (TreeViewRadioButton.Checked)
-                selectedDepartment = (DepartmentTreeView.SelectedNode == null) ? null : (Department)DepartmentTreeView.SelectedNode.Tag;
+            if (treeViewRadioButton.Checked)
+                selectedDepartment = (departmentTreeView.SelectedNode == null) ? null : (Department)departmentTreeView.SelectedNode.Tag;
             else
-                selectedDepartment = (DepartmentListBox.SelectedItem == null) ? null : (Department)DepartmentListBox.SelectedItem;
+                selectedDepartment = (departmentListBox.SelectedItem == null) ? null : (Department)departmentListBox.SelectedItem;
 
             EmployeeForm addEmployeeForm = new EmployeeForm(dataBase.Departments, selectedDepartment, "Новый сотрудник");
 
@@ -235,6 +235,7 @@ namespace CompanyDBBrowser.App
             }
             #endregion
 
+            #region Set new Employee fields
             Employee newEmployee = new Employee();
             newEmployee.SurName = addEmployeeForm.surnameTextBox.Text;
             newEmployee.FirstName = addEmployeeForm.firstNameTextBox.Text;
@@ -245,6 +246,7 @@ namespace CompanyDBBrowser.App
             newEmployee.Position = addEmployeeForm.positionTextBox.Text;
             Department selectedInAddFormDepartment = (Department)addEmployeeForm.departmentComboBox.SelectedItem;
             newEmployee.DepartmentID = selectedInAddFormDepartment.ID;
+            #endregion
 
             dataBase.Employees.Add(newEmployee);
             dataBase.SaveChanges();
@@ -255,17 +257,17 @@ namespace CompanyDBBrowser.App
         }
         private void EditEmployeeButton_Click(object sender, EventArgs e)
         {
-            if (EmployeesGridView.Rows.Count == 0)
+            if (employeesGridView.Rows.Count == 0)
                 return;
 
-            int rowIndex = EmployeesGridView.SelectedRows[0].Index;
-            string selectedEmployeeID = EmployeesGridView[0, rowIndex].Value.ToString();
-            string selectedDepartmentID = EmployeesGridView[10, rowIndex].Value.ToString();
+            int rowIndex = employeesGridView.SelectedRows[0].Index;
+            string selectedEmployeeID = employeesGridView[0, rowIndex].Value.ToString();
+            string selectedDepartmentID = employeesGridView[10, rowIndex].Value.ToString();
             Department selectedDepartment = dataBase.Departments.Where(d => d.ID.ToString() == selectedDepartmentID).First();
             Employee employee = dataBase.Employees.Where(emp => emp.ID.ToString() == selectedEmployeeID).First();
 
+            #region Set new EmployeeForm child items
             EmployeeForm editEmployeeForm = new EmployeeForm(dataBase.Departments, selectedDepartment, "Редактирование данных сотрудника");
-
             editEmployeeForm.surnameTextBox.Text = employee.SurName;
             editEmployeeForm.firstNameTextBox.Text = employee.FirstName;
             editEmployeeForm.patronymicTextBox.Text = employee.Patronymic;
@@ -273,6 +275,7 @@ namespace CompanyDBBrowser.App
             editEmployeeForm.docSeriesTextBox.Text = employee.DocSeries;
             editEmployeeForm.docNumberTextBox.Text = employee.DocNumber;
             editEmployeeForm.positionTextBox.Text = employee.Position;
+            #endregion
 
             #region Validation
             bool correctValuesEntered = false;
@@ -333,6 +336,7 @@ namespace CompanyDBBrowser.App
             }
             #endregion
 
+            #region Set Employee fields
             employee.SurName = editEmployeeForm.surnameTextBox.Text;
             employee.FirstName = editEmployeeForm.firstNameTextBox.Text;
             employee.Patronymic = editEmployeeForm.patronymicTextBox.Text;
@@ -342,20 +346,22 @@ namespace CompanyDBBrowser.App
             employee.Position = editEmployeeForm.positionTextBox.Text;
             Department selectedInAddFormDepartment = (Department)editEmployeeForm.departmentComboBox.SelectedItem;
             employee.DepartmentID = selectedInAddFormDepartment.ID;
+            #endregion
 
             dataBase.SaveChanges();
+
             // Обновление отображаемого списка сотрудников
             if (selectedDepartment != null)
                 ShowDepartmentEmployees(selectedDepartment);
         }
         private void RemoveEmployeeButton_Click(object sender, EventArgs e)
         {
-            if (EmployeesGridView.Rows.Count == 0)
+            if (employeesGridView.Rows.Count == 0)
                 return;
 
-            int rowIndex = EmployeesGridView.SelectedRows[0].Index;
-            string selectedEmployeeID = EmployeesGridView[0, rowIndex].Value.ToString();
-            string selectedDepartmentID = EmployeesGridView[10, rowIndex].Value.ToString();
+            int rowIndex = employeesGridView.SelectedRows[0].Index;
+            string selectedEmployeeID = employeesGridView[0, rowIndex].Value.ToString();
+            string selectedDepartmentID = employeesGridView[10, rowIndex].Value.ToString();
             Department selectedDepartment = dataBase.Departments.Where(d => d.ID.ToString() == selectedDepartmentID).First();
             Employee employee = dataBase.Employees.Where(emp => emp.ID.ToString() == selectedEmployeeID).First();
 

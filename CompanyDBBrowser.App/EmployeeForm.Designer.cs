@@ -31,12 +31,12 @@
             this.surnameTextBox = new System.Windows.Forms.TextBox();
             this.surnameLabel = new System.Windows.Forms.Label();
             this.firstNameLabel = new System.Windows.Forms.Label();
-            this.PatronymicLabel = new System.Windows.Forms.Label();
+            this.patronymicLabel = new System.Windows.Forms.Label();
             this.dateOfBirthLabel = new System.Windows.Forms.Label();
             this.docSeriesLabel = new System.Windows.Forms.Label();
             this.docNumberLabel = new System.Windows.Forms.Label();
             this.positionLabel = new System.Windows.Forms.Label();
-            this.DepartmentLabel = new System.Windows.Forms.Label();
+            this.departmentLabel = new System.Windows.Forms.Label();
             this.firstNameTextBox = new System.Windows.Forms.TextBox();
             this.patronymicTextBox = new System.Windows.Forms.TextBox();
             this.dateOfBirthDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -85,14 +85,14 @@
             this.firstNameLabel.TabIndex = 2;
             this.firstNameLabel.Text = "Имя";
             // 
-            // PatronymicLabel
+            // patronymicLabel
             // 
-            this.PatronymicLabel.AutoSize = true;
-            this.PatronymicLabel.Location = new System.Drawing.Point(20, 121);
-            this.PatronymicLabel.Name = "PatronymicLabel";
-            this.PatronymicLabel.Size = new System.Drawing.Size(71, 17);
-            this.PatronymicLabel.TabIndex = 3;
-            this.PatronymicLabel.Text = "Отчество";
+            this.patronymicLabel.AutoSize = true;
+            this.patronymicLabel.Location = new System.Drawing.Point(20, 121);
+            this.patronymicLabel.Name = "patronymicLabel";
+            this.patronymicLabel.Size = new System.Drawing.Size(71, 17);
+            this.patronymicLabel.TabIndex = 3;
+            this.patronymicLabel.Text = "Отчество";
             // 
             // dateOfBirthLabel
             // 
@@ -130,14 +130,14 @@
             this.positionLabel.TabIndex = 7;
             this.positionLabel.Text = "Должность";
             // 
-            // DepartmentLabel
+            // departmentLabel
             // 
-            this.DepartmentLabel.AutoSize = true;
-            this.DepartmentLabel.Location = new System.Drawing.Point(20, 342);
-            this.DepartmentLabel.Name = "DepartmentLabel";
-            this.DepartmentLabel.Size = new System.Drawing.Size(50, 17);
-            this.DepartmentLabel.TabIndex = 8;
-            this.DepartmentLabel.Text = "Отдел";
+            this.departmentLabel.AutoSize = true;
+            this.departmentLabel.Location = new System.Drawing.Point(20, 342);
+            this.departmentLabel.Name = "departmentLabel";
+            this.departmentLabel.Size = new System.Drawing.Size(50, 17);
+            this.departmentLabel.TabIndex = 8;
+            this.departmentLabel.Text = "Отдел";
             // 
             // firstNameTextBox
             // 
@@ -362,12 +362,12 @@
             this.Controls.Add(this.dateOfBirthDateTimePicker);
             this.Controls.Add(this.patronymicTextBox);
             this.Controls.Add(this.firstNameTextBox);
-            this.Controls.Add(this.DepartmentLabel);
+            this.Controls.Add(this.departmentLabel);
             this.Controls.Add(this.positionLabel);
             this.Controls.Add(this.docNumberLabel);
             this.Controls.Add(this.docSeriesLabel);
             this.Controls.Add(this.dateOfBirthLabel);
-            this.Controls.Add(this.PatronymicLabel);
+            this.Controls.Add(this.patronymicLabel);
             this.Controls.Add(this.firstNameLabel);
             this.Controls.Add(this.surnameLabel);
             this.Controls.Add(this.surnameTextBox);
@@ -382,12 +382,12 @@
         #endregion
         private System.Windows.Forms.Label surnameLabel;
         private System.Windows.Forms.Label firstNameLabel;
-        private System.Windows.Forms.Label PatronymicLabel;
+        private System.Windows.Forms.Label patronymicLabel;
         private System.Windows.Forms.Label dateOfBirthLabel;
         private System.Windows.Forms.Label docSeriesLabel;
         private System.Windows.Forms.Label docNumberLabel;
         private System.Windows.Forms.Label positionLabel;
-        private System.Windows.Forms.Label DepartmentLabel;
+        private System.Windows.Forms.Label departmentLabel;
         private System.Windows.Forms.Button addEmployeeConfirmButton;
         private System.Windows.Forms.Button addEmployeeCancelButton;
         private System.Windows.Forms.Label obligatoryFieldMarkerLabel1;
