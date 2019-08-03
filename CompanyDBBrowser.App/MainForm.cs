@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -156,6 +157,13 @@ namespace CompanyDBBrowser.App
 
         private void AddEmployeeButton_Click(object sender, EventArgs e)
         {
+            // Определение выбранного отдела
+            Department selectedDepartment;
+            if (TreeViewRadioButton.Checked)
+                selectedDepartment = (DepartmentTreeView.SelectedNode == null) ? null : (Department)DepartmentTreeView.SelectedNode.Tag;
+            else
+                selectedDepartment = (DepartmentListBox.SelectedItem == null) ? null : (Department)DepartmentListBox.SelectedItem;
+
             EmployeeForm addEmployeeForm = new EmployeeForm(dataBase.Departments, "Новый сотрудник");
 
             // Валидация
@@ -192,11 +200,15 @@ namespace CompanyDBBrowser.App
             newEmployee.DocSeries = addEmployeeForm.docSeriesTextBox.Text;
             newEmployee.DocNumber = addEmployeeForm.docNumberTextBox.Text;
             newEmployee.Position = addEmployeeForm.positionTextBox.Text;
-            Department selectedDepartment = (Department)addEmployeeForm.departmentComboBox.SelectedItem;
-            newEmployee.DepartmentID = selectedDepartment.ID;
+            Department selectedInAddFormDepartment = (Department)addEmployeeForm.departmentComboBox.SelectedItem;
+            newEmployee.DepartmentID = selectedInAddFormDepartment.ID;
 
             dataBase.Employees.Add(newEmployee);
             dataBase.SaveChanges();
+
+            // Обновление отображаемого списка сотрудников
+            if (selectedDepartment != null)
+                ShowDepartmentEmployees(selectedDepartment);
         }
 
         private void EditEmployeeButton_Click(object sender, EventArgs e)
