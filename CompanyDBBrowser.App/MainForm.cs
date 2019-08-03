@@ -349,7 +349,7 @@ namespace CompanyDBBrowser.App
 
         private void EmployeesGridView_SelectionChanged(object sender, EventArgs e)
         {
-            if (employeesGridView.SelectedRows.Count > 0)
+            if (employeesGridView.SelectedRows.Count == 1)
             {
                 int rowIndex = employeesGridView.SelectedRows[0].Index;
                 decimal selectedEmployeeID = Convert.ToDecimal(employeesGridView[0, rowIndex].Value);
