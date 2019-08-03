@@ -163,6 +163,7 @@
             this.removeEmployeeButton.TabIndex = 11;
             this.removeEmployeeButton.Text = "Удалить сотрудника";
             this.removeEmployeeButton.UseVisualStyleBackColor = true;
+            this.removeEmployeeButton.Click += new System.EventHandler(this.RemoveEmployeeButton_Click);
             // 
             // EditDepartmentButton
             // 

@@ -44,11 +44,11 @@ namespace CompanyDBBrowser.App
             AddDepartmentButton.Enabled = false;
             EditDepartmentButton.Enabled = false;
             removeDepartmentButton.Enabled = false;
-            removeEmployeeButton.Enabled = false;
             TreeViewRadioButton.Checked = true;
             DepartmentListBox.Visible = false;
             DepartmentTreeView.Visible = true;
             EditEmployeeButton.Enabled = false;
+            removeEmployeeButton.Enabled = false;
             #endregion
 
             #region EmployeesGridView Header
@@ -101,6 +101,7 @@ namespace CompanyDBBrowser.App
             ShowDepartmentDetails(selectedDepartment);
             ShowDepartmentEmployees(selectedDepartment);
             EditEmployeeButton.Enabled = true;
+            removeEmployeeButton.Enabled = true;
         }
         private void DepartmentListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -110,6 +111,7 @@ namespace CompanyDBBrowser.App
                 ShowDepartmentDetails(selectedDepartment);
                 ShowDepartmentEmployees(selectedDepartment);
                 EditEmployeeButton.Enabled = true;
+                removeEmployeeButton.Enabled = true;
             }
         }
 
@@ -251,9 +253,11 @@ namespace CompanyDBBrowser.App
             if (selectedDepartment != null)
                 ShowDepartmentEmployees(selectedDepartment);
         }
-
         private void EditEmployeeButton_Click(object sender, EventArgs e)
         {
+            if (EmployeesGridView.Rows.Count == 0)
+                return;
+
             int rowIndex = EmployeesGridView.SelectedRows[0].Index;
             string selectedEmployeeID = EmployeesGridView[0, rowIndex].Value.ToString();
             string selectedDepartmentID = EmployeesGridView[10, rowIndex].Value.ToString();
@@ -340,6 +344,34 @@ namespace CompanyDBBrowser.App
             employee.DepartmentID = selectedInAddFormDepartment.ID;
 
             dataBase.SaveChanges();
+            // Обновление отображаемого списка сотрудников
+            if (selectedDepartment != null)
+                ShowDepartmentEmployees(selectedDepartment);
+        }
+        private void RemoveEmployeeButton_Click(object sender, EventArgs e)
+        {
+            if (EmployeesGridView.Rows.Count == 0)
+                return;
+
+            int rowIndex = EmployeesGridView.SelectedRows[0].Index;
+            string selectedEmployeeID = EmployeesGridView[0, rowIndex].Value.ToString();
+            string selectedDepartmentID = EmployeesGridView[10, rowIndex].Value.ToString();
+            Department selectedDepartment = dataBase.Departments.Where(d => d.ID.ToString() == selectedDepartmentID).First();
+            Employee employee = dataBase.Employees.Where(emp => emp.ID.ToString() == selectedEmployeeID).First();
+
+            DialogResult result;
+            if (employee.Patronymic != "")
+                result = MessageBox.Show($"Удалить сотрудника {employee.SurName} {employee.FirstName} {employee.Patronymic}?",
+                                         "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            else
+                result = MessageBox.Show($"Удалить сотрудника {employee.SurName} {employee.FirstName}?",
+                                         "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.Cancel)
+                return;
+
+            dataBase.Employees.Remove(employee);
+            dataBase.SaveChanges();
+
             // Обновление отображаемого списка сотрудников
             if (selectedDepartment != null)
                 ShowDepartmentEmployees(selectedDepartment);
