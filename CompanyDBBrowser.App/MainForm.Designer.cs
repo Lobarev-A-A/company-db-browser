@@ -134,6 +134,7 @@
             this.employeesGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.employeesGridView.Size = new System.Drawing.Size(931, 575);
             this.employeesGridView.TabIndex = 3;
+            this.employeesGridView.SelectionChanged += new System.EventHandler(this.EmployeesGridView_SelectionChanged);
             // 
             // addEmployeeButton
             // 
@@ -250,6 +251,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CompanyDBBrowser";
             this.departmentsViewGroupBox.ResumeLayout(false);
             this.departmentsViewGroupBox.PerformLayout();

@@ -193,7 +193,7 @@
             // addEmployeeConfirmButton
             // 
             this.addEmployeeConfirmButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.addEmployeeConfirmButton.Location = new System.Drawing.Point(437, 412);
+            this.addEmployeeConfirmButton.Location = new System.Drawing.Point(437, 408);
             this.addEmployeeConfirmButton.Name = "addEmployeeConfirmButton";
             this.addEmployeeConfirmButton.Size = new System.Drawing.Size(93, 28);
             this.addEmployeeConfirmButton.TabIndex = 16;
@@ -203,7 +203,7 @@
             // addEmployeeCancelButton
             // 
             this.addEmployeeCancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.addEmployeeCancelButton.Location = new System.Drawing.Point(534, 412);
+            this.addEmployeeCancelButton.Location = new System.Drawing.Point(534, 408);
             this.addEmployeeCancelButton.Name = "addEmployeeCancelButton";
             this.addEmployeeCancelButton.Size = new System.Drawing.Size(93, 28);
             this.addEmployeeCancelButton.TabIndex = 17;
@@ -264,7 +264,7 @@
             // 
             this.markedFieldsAttentionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.markedFieldsAttentionLabel.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.markedFieldsAttentionLabel.Location = new System.Drawing.Point(20, 377);
+            this.markedFieldsAttentionLabel.Location = new System.Drawing.Point(20, 375);
             this.markedFieldsAttentionLabel.Name = "markedFieldsAttentionLabel";
             this.markedFieldsAttentionLabel.Size = new System.Drawing.Size(447, 25);
             this.markedFieldsAttentionLabel.TabIndex = 23;
@@ -340,7 +340,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(657, 458);
+            this.ClientSize = new System.Drawing.Size(659, 454);
             this.Controls.Add(this.fieldLengthAttentionLabel6);
             this.Controls.Add(this.fieldLengthAttentionLabel5);
             this.Controls.Add(this.fieldLengthAttentionLabel4);
@@ -376,6 +376,7 @@
             this.MinimizeBox = false;
             this.Name = "EmployeeForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.EmployeeForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
