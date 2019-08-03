@@ -89,6 +89,8 @@ namespace CompanyDBBrowser.App
 
         private void DepartmentTreeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            if (departmentTreeView.SelectedNode == null)
+                return;
             selectedDepartment = (Department)departmentTreeView.SelectedNode.Tag;
             ShowDepartmentDetails();
             ShowDepartmentEmployees();
@@ -137,8 +139,9 @@ namespace CompanyDBBrowser.App
             foreach (Employee employee in selectedDepartment.Employees)
             {
                 string[] row = { employee.ID.ToString(), employee.SurName, employee.FirstName, employee.Patronymic,
-                                     employee.DateOfBirth.ToString("d", culture), "Age", employee.DocSeries, employee.DocNumber,
-                                     employee.Department.Name, employee.Position, employee.DepartmentID.ToString()};
+                                 employee.DateOfBirth.ToString("d", culture), Age(employee.DateOfBirth).ToString(),
+                                 employee.DocSeries, employee.DocNumber, employee.Department.Name, employee.Position,
+                                 employee.DepartmentID.ToString()};
 
                 employeesGridView.Rows.Add(row);
             }
@@ -224,7 +227,7 @@ namespace CompanyDBBrowser.App
             newEmployee.SurName = addEmployeeForm.surnameTextBox.Text;
             newEmployee.FirstName = addEmployeeForm.firstNameTextBox.Text;
             newEmployee.Patronymic = addEmployeeForm.patronymicTextBox.Text;
-            newEmployee.DateOfBirth = addEmployeeForm.dateOfBirthDateTimePicker.Value;
+            newEmployee.DateOfBirth = addEmployeeForm.dateOfBirthDateTimePicker.Value.Date;
             newEmployee.DocSeries = addEmployeeForm.docSeriesTextBox.Text;
             newEmployee.DocNumber = addEmployeeForm.docNumberTextBox.Text;
             newEmployee.Position = addEmployeeForm.positionTextBox.Text;
@@ -313,7 +316,7 @@ namespace CompanyDBBrowser.App
             selectedEmployee.SurName = editEmployeeForm.surnameTextBox.Text;
             selectedEmployee.FirstName = editEmployeeForm.firstNameTextBox.Text;
             selectedEmployee.Patronymic = editEmployeeForm.patronymicTextBox.Text;
-            selectedEmployee.DateOfBirth = editEmployeeForm.dateOfBirthDateTimePicker.Value;
+            selectedEmployee.DateOfBirth = editEmployeeForm.dateOfBirthDateTimePicker.Value.Date;
             selectedEmployee.DocSeries = editEmployeeForm.docSeriesTextBox.Text;
             selectedEmployee.DocNumber = editEmployeeForm.docNumberTextBox.Text;
             selectedEmployee.Position = editEmployeeForm.positionTextBox.Text;
@@ -361,6 +364,14 @@ namespace CompanyDBBrowser.App
                 removeEmployeeButton.Enabled = false;
                 selectedEmployee = null;
             }
+        }
+
+        private int Age(DateTime dateOfBirth)
+        {
+            DateTime now = DateTime.Today;
+            int age = now.Year - dateOfBirth.Year;
+            if (dateOfBirth > now.AddYears(-age)) age--;
+            return age;
         }
     }
 }
