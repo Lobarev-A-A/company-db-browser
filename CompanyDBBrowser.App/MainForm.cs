@@ -41,9 +41,14 @@ namespace CompanyDBBrowser.App
             ShowDepartmentsInListBox(departments);
 
             // Установка начального состояния элементов формы
+            AddDepartmentButton.Enabled = false;
+            EditDepartmentButton.Enabled = false;
+            removeDepartmentButton.Enabled = false;
+            removeEmployeeButton.Enabled = false;
             TreeViewRadioButton.Checked = true;
             DepartmentListBox.Visible = false;
             DepartmentTreeView.Visible = true;
+            EditEmployeeButton.Enabled = false;
 
             #region EmployeesGridView Header
             EmployeesGridView.ColumnCount = 11;
@@ -164,7 +169,7 @@ namespace CompanyDBBrowser.App
             else
                 selectedDepartment = (DepartmentListBox.SelectedItem == null) ? null : (Department)DepartmentListBox.SelectedItem;
 
-            EmployeeForm addEmployeeForm = new EmployeeForm(dataBase.Departments, "Новый сотрудник");
+            EmployeeForm addEmployeeForm = new EmployeeForm(dataBase.Departments, selectedDepartment, "Новый сотрудник");
 
             // Валидация
             bool correctValuesEntered = false;

@@ -37,10 +37,10 @@
             this.EmployeesGridView = new System.Windows.Forms.DataGridView();
             this.AddEmployeeButton = new System.Windows.Forms.Button();
             this.EditEmployeeButton = new System.Windows.Forms.Button();
-            this.DeleteEmployeeButton = new System.Windows.Forms.Button();
+            this.removeEmployeeButton = new System.Windows.Forms.Button();
             this.EditDepartmentButton = new System.Windows.Forms.Button();
             this.AddDepartmentButton = new System.Windows.Forms.Button();
-            this.DeleteDepartmentButton = new System.Windows.Forms.Button();
+            this.removeDepartmentButton = new System.Windows.Forms.Button();
             this.DepartmentDetailsGridView = new System.Windows.Forms.DataGridView();
             this.DepartmentDetailsGroupBox = new System.Windows.Forms.GroupBox();
             this.EmployeesGroupBox = new System.Windows.Forms.GroupBox();
@@ -155,14 +155,14 @@
             this.EditEmployeeButton.UseVisualStyleBackColor = true;
             this.EditEmployeeButton.Click += new System.EventHandler(this.EditEmployeeButton_Click);
             // 
-            // DeleteEmployeeButton
+            // removeEmployeeButton
             // 
-            this.DeleteEmployeeButton.Location = new System.Drawing.Point(827, 602);
-            this.DeleteEmployeeButton.Name = "DeleteEmployeeButton";
-            this.DeleteEmployeeButton.Size = new System.Drawing.Size(97, 50);
-            this.DeleteEmployeeButton.TabIndex = 11;
-            this.DeleteEmployeeButton.Text = "Удалить сотрудника";
-            this.DeleteEmployeeButton.UseVisualStyleBackColor = true;
+            this.removeEmployeeButton.Location = new System.Drawing.Point(827, 602);
+            this.removeEmployeeButton.Name = "removeEmployeeButton";
+            this.removeEmployeeButton.Size = new System.Drawing.Size(97, 50);
+            this.removeEmployeeButton.TabIndex = 11;
+            this.removeEmployeeButton.Text = "Удалить сотрудника";
+            this.removeEmployeeButton.UseVisualStyleBackColor = true;
             // 
             // EditDepartmentButton
             // 
@@ -182,14 +182,14 @@
             this.AddDepartmentButton.Text = "Добавить отдел";
             this.AddDepartmentButton.UseVisualStyleBackColor = true;
             // 
-            // DeleteDepartmentButton
+            // removeDepartmentButton
             // 
-            this.DeleteDepartmentButton.Location = new System.Drawing.Point(298, 191);
-            this.DeleteDepartmentButton.Name = "DeleteDepartmentButton";
-            this.DeleteDepartmentButton.Size = new System.Drawing.Size(90, 49);
-            this.DeleteDepartmentButton.TabIndex = 8;
-            this.DeleteDepartmentButton.Text = "Удалить отдел";
-            this.DeleteDepartmentButton.UseVisualStyleBackColor = true;
+            this.removeDepartmentButton.Location = new System.Drawing.Point(298, 191);
+            this.removeDepartmentButton.Name = "removeDepartmentButton";
+            this.removeDepartmentButton.Size = new System.Drawing.Size(90, 49);
+            this.removeDepartmentButton.TabIndex = 8;
+            this.removeDepartmentButton.Text = "Удалить отдел";
+            this.removeDepartmentButton.UseVisualStyleBackColor = true;
             // 
             // DepartmentDetailsGridView
             // 
@@ -214,7 +214,7 @@
             // 
             this.DepartmentDetailsGroupBox.Controls.Add(this.DepartmentDetailsGridView);
             this.DepartmentDetailsGroupBox.Controls.Add(this.EditDepartmentButton);
-            this.DepartmentDetailsGroupBox.Controls.Add(this.DeleteDepartmentButton);
+            this.DepartmentDetailsGroupBox.Controls.Add(this.removeDepartmentButton);
             this.DepartmentDetailsGroupBox.Controls.Add(this.AddDepartmentButton);
             this.DepartmentDetailsGroupBox.Location = new System.Drawing.Point(10, 445);
             this.DepartmentDetailsGroupBox.Name = "DepartmentDetailsGroupBox";
@@ -228,7 +228,7 @@
             this.EmployeesGroupBox.Controls.Add(this.AddEmployeeButton);
             this.EmployeesGroupBox.Controls.Add(this.EditEmployeeButton);
             this.EmployeesGroupBox.Controls.Add(this.EmployeesGridView);
-            this.EmployeesGroupBox.Controls.Add(this.DeleteEmployeeButton);
+            this.EmployeesGroupBox.Controls.Add(this.removeEmployeeButton);
             this.EmployeesGroupBox.Location = new System.Drawing.Point(437, 33);
             this.EmployeesGroupBox.Name = "EmployeesGroupBox";
             this.EmployeesGroupBox.Size = new System.Drawing.Size(933, 661);
@@ -268,11 +268,11 @@
         private System.Windows.Forms.DataGridView EmployeesGridView;
         private System.Windows.Forms.Button AddEmployeeButton;
         private System.Windows.Forms.Button EditEmployeeButton;
-        private System.Windows.Forms.Button DeleteEmployeeButton;
+        private System.Windows.Forms.Button removeEmployeeButton;
         private System.Windows.Forms.ListBox DepartmentListBox;
         private System.Windows.Forms.Button EditDepartmentButton;
         private System.Windows.Forms.Button AddDepartmentButton;
-        private System.Windows.Forms.Button DeleteDepartmentButton;
+        private System.Windows.Forms.Button removeDepartmentButton;
         private System.Windows.Forms.DataGridView DepartmentDetailsGridView;
         private System.Windows.Forms.GroupBox DepartmentDetailsGroupBox;
         private System.Windows.Forms.GroupBox EmployeesGroupBox;

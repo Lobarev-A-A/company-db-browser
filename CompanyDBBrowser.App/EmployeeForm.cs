@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace CompanyDBBrowser.App
 {
     public partial class EmployeeForm : Form
     {
-        public EmployeeForm(System.Data.Entity.DbSet<Department> departments, string caption)
+        public EmployeeForm(DbSet<Department> departments, Department selectedDepartment, string caption)
         {
             InitializeComponent();
 
@@ -24,7 +25,12 @@ namespace CompanyDBBrowser.App
                 departmentComboBox.Items.Add(d);
             }
             departmentComboBox.Sorted = true;
-            departmentComboBox.SelectedIndex = 0;
+
+            // Выставление дефолтного значения отдела
+            if (selectedDepartment != null)
+                departmentComboBox.SelectedItem = selectedDepartment;
+            else
+                departmentComboBox.SelectedIndex = 0;
         }
 
         private void EmployeeForm_Load(object sender, EventArgs e)
