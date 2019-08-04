@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace CompanyDBBrowser.App
 {
-    public partial class EmployeeForm : Form
+    public partial class DepartmentForm : Form
     {
-        public EmployeeForm(DbSet<Department> departments, Department selectedDepartment, string caption)
+        public DepartmentForm(DbSet<Department> departments, Department selectedDepartment, string caption)
         {
             InitializeComponent();
 
             this.Text = caption;
-            
+
             // Инициализация списка отделов
             foreach (Department d in departments)
             {

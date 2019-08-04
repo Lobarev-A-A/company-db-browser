@@ -183,6 +183,7 @@
             this.addDepartmentButton.TabIndex = 6;
             this.addDepartmentButton.Text = "Добавить отдел";
             this.addDepartmentButton.UseVisualStyleBackColor = true;
+            this.addDepartmentButton.Click += new System.EventHandler(this.AddDepartmentButton_Click);
             // 
             // removeDepartmentButton
             // 

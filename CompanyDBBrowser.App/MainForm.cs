@@ -30,7 +30,6 @@ namespace CompanyDBBrowser.App
 
             #region Set default condition of form elements
             companyNameLabel.Text = dataBase.Departments.Where(d => d.ParentDepartmentID == null).First().Name;
-            addDepartmentButton.Enabled = false;
             editDepartmentButton.Enabled = false;
             removeDepartmentButton.Enabled = false;
             treeViewRadioButton.Checked = true;
@@ -38,6 +37,7 @@ namespace CompanyDBBrowser.App
             departmentTreeView.Visible = true;
             editEmployeeButton.Enabled = false;
             removeEmployeeButton.Enabled = false;
+            addDepartmentButton.Enabled = true;
 
             #region EmployeesGridView Header
             employeesGridView.ColumnCount = 11;
@@ -156,6 +156,7 @@ namespace CompanyDBBrowser.App
         }
         private void ShowDepartmentsInTreeView()
         {
+            departmentTreeView.Nodes.Clear();
             departmentTreeView.Nodes.Add(TreeViewRecursiveInitialization(dataBase.Departments.Where(d => d.ParentDepartmentID == null).First(),
                                          dataBase.Departments));
         }
@@ -346,6 +347,57 @@ namespace CompanyDBBrowser.App
             removeEmployeeButton.Enabled = false;
             dataBase.SaveChanges();
             ShowDepartmentEmployees();
+        }
+
+        private void AddDepartmentButton_Click(object sender, EventArgs e)
+        {
+            DepartmentForm addDepartmentForm = new DepartmentForm(dataBase.Departments, selectedDepartment, "Новый отдел");
+
+            #region Validation
+            bool correctValuesEntered = false;
+            while (correctValuesEntered == false)
+            {
+                DialogResult dialogResult = addDepartmentForm.ShowDialog(this);
+
+                if (dialogResult == DialogResult.Cancel)
+                    return;
+                correctValuesEntered = true;
+                // Отсечение пробелов
+                addDepartmentForm.nameTextBox.Text = addDepartmentForm.nameTextBox.Text.Trim();
+                addDepartmentForm.codeTextBox.Text = addDepartmentForm.codeTextBox.Text.Trim();
+                // Обязательные поля
+                if (addDepartmentForm.nameTextBox.Text == "")
+                {
+                    MessageBox.Show("Поле \"Название\" должно быть заполнено!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+                // Длина строки
+                if (addDepartmentForm.nameTextBox.Text.Length > 50)
+                {
+                    MessageBox.Show("Поле \"Название\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+                if (addDepartmentForm.codeTextBox.Text.Length > 10)
+                {
+                    MessageBox.Show("Поле \"Код\" должно содержать не более 10 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    correctValuesEntered = false;
+                }
+            }
+            #endregion
+
+            #region Set new Employee fields
+            Department newDepartment = new Department();
+            newDepartment.ID = Guid.NewGuid();
+            newDepartment.Name = addDepartmentForm.nameTextBox.Text;
+            newDepartment.Code = addDepartmentForm.codeTextBox.Text;
+            Department selectedInAddFormDepartment = (Department)addDepartmentForm.departmentComboBox.SelectedItem;
+            newDepartment.ParentDepartmentID = selectedInAddFormDepartment.ID;
+            #endregion
+
+            dataBase.Departments.Add(newDepartment);
+            dataBase.SaveChanges();
+            ShowDepartmentsInListBox();
+            ShowDepartmentsInTreeView();
         }
 
         private void EmployeesGridView_SelectionChanged(object sender, EventArgs e)
