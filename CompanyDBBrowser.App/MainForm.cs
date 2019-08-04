@@ -28,8 +28,12 @@ namespace CompanyDBBrowser.App
 
             dataBase = new Model();
 
+            var rootDepartments = dataBase.Departments.Where(d => d.ParentDepartmentID == null);
+            if (rootDepartments.Count() == 0)
+                throw new Exception("Невозможно построение структуры предприятия. Отсутствует корневой Department.");
+
             #region Set default condition of form elements
-            companyNameLabel.Text = dataBase.Departments.Where(d => d.ParentDepartmentID == null).First().Name;
+            companyNameLabel.Text = rootDepartments.First().Name;
             editDepartmentButton.Enabled = false;
             removeDepartmentButton.Enabled = false;
             treeViewRadioButton.Checked = true;
@@ -157,8 +161,13 @@ namespace CompanyDBBrowser.App
         private void ShowDepartmentsInTreeView()
         {
             departmentTreeView.Nodes.Clear();
-            departmentTreeView.Nodes.Add(TreeViewRecursiveInitialization(dataBase.Departments.Where(d => d.ParentDepartmentID == null).First(),
-                                         dataBase.Departments));
+
+            var rootDepartments = dataBase.Departments.Where(d => d.ParentDepartmentID == null);
+            if (rootDepartments.Count() == 0)
+                throw new Exception("Невозможно построение структуры предприятия. Отсутствует корневой Department.");
+
+            foreach (Department d in rootDepartments)
+                departmentTreeView.Nodes.Add(TreeViewRecursiveInitialization(d, dataBase.Departments));
         }
 
         private void AddEmployeeButton_Click(object sender, EventArgs e)
