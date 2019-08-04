@@ -174,6 +174,13 @@ namespace CompanyDBBrowser.App
                 if (dialogResult == DialogResult.Cancel)
                     return;
                 correctValuesEntered = true;
+                // Отсечение пробелов
+                addEmployeeForm.surnameTextBox.Text = addEmployeeForm.surnameTextBox.Text.Trim();
+                addEmployeeForm.firstNameTextBox.Text = addEmployeeForm.firstNameTextBox.Text.Trim();
+                addEmployeeForm.patronymicTextBox.Text = addEmployeeForm.patronymicTextBox.Text.Trim();
+                addEmployeeForm.docSeriesTextBox.Text = addEmployeeForm.docSeriesTextBox.Text.Trim();
+                addEmployeeForm.docNumberTextBox.Text = addEmployeeForm.docNumberTextBox.Text.Trim();
+                addEmployeeForm.positionTextBox.Text = addEmployeeForm.positionTextBox.Text.Trim();
                 // Обязательные поля
                 if (addEmployeeForm.surnameTextBox.Text == "")
                 {
@@ -264,6 +271,13 @@ namespace CompanyDBBrowser.App
                 if (dialogResult == DialogResult.Cancel)
                     return;
                 correctValuesEntered = true;
+                // Отсечение пробелов
+                editEmployeeForm.surnameTextBox.Text = editEmployeeForm.surnameTextBox.Text.Trim();
+                editEmployeeForm.firstNameTextBox.Text = editEmployeeForm.firstNameTextBox.Text.Trim();
+                editEmployeeForm.patronymicTextBox.Text = editEmployeeForm.patronymicTextBox.Text.Trim();
+                editEmployeeForm.docSeriesTextBox.Text = editEmployeeForm.docSeriesTextBox.Text.Trim();
+                editEmployeeForm.docNumberTextBox.Text = editEmployeeForm.docNumberTextBox.Text.Trim();
+                editEmployeeForm.positionTextBox.Text = editEmployeeForm.positionTextBox.Text.Trim();
                 // Обязательные поля
                 if (editEmployeeForm.surnameTextBox.Text == "")
                 {
