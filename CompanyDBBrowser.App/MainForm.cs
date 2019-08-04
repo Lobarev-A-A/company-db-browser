@@ -413,8 +413,16 @@ namespace CompanyDBBrowser.App
             newDepartment.ID = Guid.NewGuid();
             newDepartment.Name = addDepartmentForm.nameTextBox.Text;
             newDepartment.Code = addDepartmentForm.codeTextBox.Text;
-            Department selectedInAddFormDepartment = (Department)addDepartmentForm.departmentComboBox.SelectedItem;
-            newDepartment.ParentDepartmentID = selectedInAddFormDepartment.ID;
+            Department selectedInAddFormDepartment;
+            if (addDepartmentForm.departmentComboBox.SelectedItem.ToString() == "Не указывать")
+            {
+                newDepartment.ParentDepartmentID = null;
+            }
+            else
+            {
+                selectedInAddFormDepartment = (Department)addDepartmentForm.departmentComboBox.SelectedItem;
+                newDepartment.ParentDepartmentID = selectedInAddFormDepartment.ID;
+            }
             #endregion
 
             dataBase.Departments.Add(newDepartment);

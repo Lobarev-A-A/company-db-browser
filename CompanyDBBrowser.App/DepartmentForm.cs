@@ -24,6 +24,7 @@ namespace CompanyDBBrowser.App
             {
                 departmentComboBox.Items.Add(d);
             }
+            departmentComboBox.Items.Add("Не указывать");
             departmentComboBox.Sorted = true;
 
             // Выставление дефолтного значения отдела
