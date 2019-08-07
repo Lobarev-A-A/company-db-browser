@@ -8,10 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ComponentModel.DataAnnotations;
 
 namespace CompanyDBBrowser.App
 {
-    public partial class DepartmentForm : Form
+    public partial class DepartmentForm : Form, IValidatableObject
     {
         public DepartmentForm(DbSet<Department> departments, Department selectedDepartment, string caption)
         {
@@ -32,6 +33,44 @@ namespace CompanyDBBrowser.App
                 departmentComboBox.SelectedItem = selectedDepartment;
             else
                 departmentComboBox.SelectedIndex = 0;
+        }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            List<ValidationResult> errors = new List<ValidationResult>();
+
+            // Отсечение пробелов
+            nameTextBox.Text = nameTextBox.Text.Trim();
+            codeTextBox.Text = codeTextBox.Text.Trim();
+
+            // Обязательные поля
+            if (string.IsNullOrEmpty(nameTextBox.Text))
+                errors.Add(new ValidationResult("Поле \"Название\" должно быть заполнено!"));
+
+            // Длина строки
+            if (nameTextBox.Text.Length > 50)
+                errors.Add(new ValidationResult("Поле \"Название\" должно содержать не более 50 символов!"));
+            if (codeTextBox.Text.Length > 10)
+                errors.Add(new ValidationResult("Поле \"Код\" должно содержать не более 10 символов!"));
+
+            return errors;
+        }
+
+        public bool RunValidaton()
+        {
+            var context = new ValidationContext(this);
+            var results = new List<ValidationResult>();
+
+            if (!Validator.TryValidateObject(this, context, results, true))
+            {
+                string messageBoxErrorMessage = "";
+                foreach (ValidationResult r in results)
+                    messageBoxErrorMessage += r.ErrorMessage + '\n';
+                MessageBox.Show(messageBoxErrorMessage, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+                return true;
         }
     }
 }

@@ -264,7 +264,7 @@ namespace CompanyDBBrowser.App
         {
             DepartmentForm addDepartmentForm = new DepartmentForm(dataBase.Departments, selectedDepartment, "Новый отдел");
 
-            #region Validation
+            // Валидация
             bool correctValuesEntered = false;
             while (correctValuesEntered == false)
             {
@@ -272,29 +272,8 @@ namespace CompanyDBBrowser.App
 
                 if (dialogResult == DialogResult.Cancel)
                     return;
-                correctValuesEntered = true;
-                // Отсечение пробелов
-                addDepartmentForm.nameTextBox.Text = addDepartmentForm.nameTextBox.Text.Trim();
-                addDepartmentForm.codeTextBox.Text = addDepartmentForm.codeTextBox.Text.Trim();
-                // Обязательные поля
-                if (addDepartmentForm.nameTextBox.Text == "")
-                {
-                    MessageBox.Show("Поле \"Название\" должно быть заполнено!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                // Длина строки
-                if (addDepartmentForm.nameTextBox.Text.Length > 50)
-                {
-                    MessageBox.Show("Поле \"Название\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                if (addDepartmentForm.codeTextBox.Text.Length > 10)
-                {
-                    MessageBox.Show("Поле \"Код\" должно содержать не более 10 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
+                correctValuesEntered = addDepartmentForm.RunValidaton();
             }
-            #endregion
 
             #region Set new Employee fields
             Department newDepartment = new Department();
