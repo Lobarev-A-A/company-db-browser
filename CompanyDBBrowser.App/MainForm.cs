@@ -174,71 +174,15 @@ namespace CompanyDBBrowser.App
         {
             EmployeeForm addEmployeeForm = new EmployeeForm(dataBase.Departments, selectedDepartment, "Новый сотрудник");
 
-            #region Validation
+            // Валидация
             bool correctValuesEntered = false;
             while (correctValuesEntered == false)
             {
                 DialogResult dialogResult = addEmployeeForm.ShowDialog(this);
-
                 if (dialogResult == DialogResult.Cancel)
                     return;
-                correctValuesEntered = true;
-                // Отсечение пробелов
-                addEmployeeForm.surnameTextBox.Text = addEmployeeForm.surnameTextBox.Text.Trim();
-                addEmployeeForm.firstNameTextBox.Text = addEmployeeForm.firstNameTextBox.Text.Trim();
-                addEmployeeForm.patronymicTextBox.Text = addEmployeeForm.patronymicTextBox.Text.Trim();
-                addEmployeeForm.docSeriesTextBox.Text = addEmployeeForm.docSeriesTextBox.Text.Trim();
-                addEmployeeForm.docNumberTextBox.Text = addEmployeeForm.docNumberTextBox.Text.Trim();
-                addEmployeeForm.positionTextBox.Text = addEmployeeForm.positionTextBox.Text.Trim();
-                // Обязательные поля
-                if (addEmployeeForm.surnameTextBox.Text == "")
-                {
-                    MessageBox.Show("Поле \"Фамилия\" должно быть заполнено!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                if (addEmployeeForm.firstNameTextBox.Text == "")
-                {
-                    MessageBox.Show("Поле \"Имя\" должно быть заполнено!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                if (addEmployeeForm.positionTextBox.Text == "")
-                {
-                    MessageBox.Show("Поле \"Должность\" должно быть заполнено!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                // Длина строки
-                if (addEmployeeForm.surnameTextBox.Text.Length > 50)
-                {
-                    MessageBox.Show("Поле \"Фамилия\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                if (addEmployeeForm.firstNameTextBox.Text.Length > 50)
-                {
-                    MessageBox.Show("Поле \"Имя\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                if (addEmployeeForm.patronymicTextBox.Text.Length > 50)
-                {
-                    MessageBox.Show("Поле \"Отчество\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                if (addEmployeeForm.docSeriesTextBox.Text.Length > 4)
-                {
-                    MessageBox.Show("Поле \"Серия документа\" должно содержать не более 4 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                if (addEmployeeForm.docNumberTextBox.Text.Length > 6)
-                {
-                    MessageBox.Show("Поле \"Номер документа\" должно содержать не более 6 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                if (addEmployeeForm.positionTextBox.Text.Length > 50)
-                {
-                    MessageBox.Show("Поле \"Должность\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
+                correctValuesEntered = addEmployeeForm.RunValidation();                
             }
-            #endregion
 
             #region Set new Employee fields
             Employee newEmployee = new Employee();
@@ -271,71 +215,15 @@ namespace CompanyDBBrowser.App
             editEmployeeForm.positionTextBox.Text = selectedEmployee.Position;
             #endregion
 
-            #region Validation
+            // Валидация
             bool correctValuesEntered = false;
             while (correctValuesEntered == false)
             {
                 DialogResult dialogResult = editEmployeeForm.ShowDialog(this);
-
                 if (dialogResult == DialogResult.Cancel)
                     return;
-                correctValuesEntered = true;
-                // Отсечение пробелов
-                editEmployeeForm.surnameTextBox.Text = editEmployeeForm.surnameTextBox.Text.Trim();
-                editEmployeeForm.firstNameTextBox.Text = editEmployeeForm.firstNameTextBox.Text.Trim();
-                editEmployeeForm.patronymicTextBox.Text = editEmployeeForm.patronymicTextBox.Text.Trim();
-                editEmployeeForm.docSeriesTextBox.Text = editEmployeeForm.docSeriesTextBox.Text.Trim();
-                editEmployeeForm.docNumberTextBox.Text = editEmployeeForm.docNumberTextBox.Text.Trim();
-                editEmployeeForm.positionTextBox.Text = editEmployeeForm.positionTextBox.Text.Trim();
-                // Обязательные поля
-                if (editEmployeeForm.surnameTextBox.Text == "")
-                {
-                    MessageBox.Show("Поле \"Фамилия\" должно быть заполнено!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                if (editEmployeeForm.firstNameTextBox.Text == "")
-                {
-                    MessageBox.Show("Поле \"Имя\" должно быть заполнено!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                if (editEmployeeForm.positionTextBox.Text == "")
-                {
-                    MessageBox.Show("Поле \"Должность\" должно быть заполнено!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                // Длина строки
-                if (editEmployeeForm.surnameTextBox.Text.Length > 50)
-                {
-                    MessageBox.Show("Поле \"Фамилия\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                if (editEmployeeForm.firstNameTextBox.Text.Length > 50)
-                {
-                    MessageBox.Show("Поле \"Имя\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                if (editEmployeeForm.patronymicTextBox.Text.Length > 50)
-                {
-                    MessageBox.Show("Поле \"Отчество\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                if (editEmployeeForm.docSeriesTextBox.Text.Length > 4)
-                {
-                    MessageBox.Show("Поле \"Серия документа\" должно содержать не более 4 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                if (editEmployeeForm.docNumberTextBox.Text.Length > 6)
-                {
-                    MessageBox.Show("Поле \"Номер документа\" должно содержать не более 6 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
-                if (editEmployeeForm.positionTextBox.Text.Length > 50)
-                {
-                    MessageBox.Show("Поле \"Должность\" должно содержать не более 50 символов!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    correctValuesEntered = false;
-                }
+                correctValuesEntered = editEmployeeForm.RunValidation();
             }
-            #endregion
 
             #region Set Employee fields
             selectedEmployee.SurName = editEmployeeForm.surnameTextBox.Text;
