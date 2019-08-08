@@ -281,10 +281,8 @@ namespace CompanyDBBrowser.App
             newDepartment.Name = addDepartmentForm.nameTextBox.Text;
             newDepartment.Code = addDepartmentForm.codeTextBox.Text;
             Department selectedInAddFormDepartment;
-            if (addDepartmentForm.departmentComboBox.SelectedItem.ToString() == "Не указывать")
-            {
+            if (addDepartmentForm.departmentComboBox.SelectedItem == null)
                 newDepartment.ParentDepartmentID = null;
-            }
             else
             {
                 selectedInAddFormDepartment = (Department)addDepartmentForm.departmentComboBox.SelectedItem;

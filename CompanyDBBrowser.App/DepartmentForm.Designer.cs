@@ -38,9 +38,9 @@
             this.markedFieldsAttentionLabel = new System.Windows.Forms.Label();
             this.cancelButton = new System.Windows.Forms.Button();
             this.confirmButton = new System.Windows.Forms.Button();
-            this.obligatoryFieldMarkerLabel2 = new System.Windows.Forms.Label();
             this.departmentComboBox = new System.Windows.Forms.ComboBox();
             this.parentDepartmentLabel = new System.Windows.Forms.Label();
+            this.nullParentDepartmentIDCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // fieldLengthAttentionLabel2
@@ -136,16 +136,7 @@
             this.confirmButton.TabIndex = 34;
             this.confirmButton.Text = "ОК";
             this.confirmButton.UseVisualStyleBackColor = true;
-            // 
-            // obligatoryFieldMarkerLabel2
-            // 
-            this.obligatoryFieldMarkerLabel2.AutoSize = true;
-            this.obligatoryFieldMarkerLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.obligatoryFieldMarkerLabel2.Location = new System.Drawing.Point(629, 115);
-            this.obligatoryFieldMarkerLabel2.Name = "obligatoryFieldMarkerLabel2";
-            this.obligatoryFieldMarkerLabel2.Size = new System.Drawing.Size(20, 25);
-            this.obligatoryFieldMarkerLabel2.TabIndex = 39;
-            this.obligatoryFieldMarkerLabel2.Text = "*";
+            this.confirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
             // departmentComboBox
             // 
@@ -165,12 +156,23 @@
             this.parentDepartmentLabel.TabIndex = 37;
             this.parentDepartmentLabel.Text = "Родительский отдел";
             // 
+            // nullParentDepartmentIDCheckBox
+            // 
+            this.nullParentDepartmentIDCheckBox.AutoSize = true;
+            this.nullParentDepartmentIDCheckBox.Location = new System.Drawing.Point(172, 119);
+            this.nullParentDepartmentIDCheckBox.Name = "nullParentDepartmentIDCheckBox";
+            this.nullParentDepartmentIDCheckBox.Size = new System.Drawing.Size(120, 21);
+            this.nullParentDepartmentIDCheckBox.TabIndex = 40;
+            this.nullParentDepartmentIDCheckBox.Text = "Не указывать";
+            this.nullParentDepartmentIDCheckBox.UseVisualStyleBackColor = true;
+            this.nullParentDepartmentIDCheckBox.CheckedChanged += new System.EventHandler(this.NullParentDepartmentIDCheckBox_CheckedChanged);
+            // 
             // DepartmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(659, 232);
-            this.Controls.Add(this.obligatoryFieldMarkerLabel2);
+            this.Controls.Add(this.nullParentDepartmentIDCheckBox);
             this.Controls.Add(this.departmentComboBox);
             this.Controls.Add(this.parentDepartmentLabel);
             this.Controls.Add(this.markedFieldsAttentionLabel);
@@ -206,8 +208,8 @@
         private System.Windows.Forms.Label markedFieldsAttentionLabel;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button confirmButton;
-        private System.Windows.Forms.Label obligatoryFieldMarkerLabel2;
         protected internal System.Windows.Forms.ComboBox departmentComboBox;
         private System.Windows.Forms.Label parentDepartmentLabel;
+        private System.Windows.Forms.CheckBox nullParentDepartmentIDCheckBox;
     }
 }

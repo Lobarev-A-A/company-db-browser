@@ -25,7 +25,6 @@ namespace CompanyDBBrowser.App
             {
                 departmentComboBox.Items.Add(d);
             }
-            departmentComboBox.Items.Add("Не указывать");
             departmentComboBox.Sorted = true;
 
             // Выставление дефолтного значения отдела
@@ -71,6 +70,17 @@ namespace CompanyDBBrowser.App
             }
             else
                 return true;
+        }
+
+        private void NullParentDepartmentIDCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            departmentComboBox.Enabled = !nullParentDepartmentIDCheckBox.Checked;
+        }
+
+        private void ConfirmButton_Click(object sender, EventArgs e)
+        {
+            if (nullParentDepartmentIDCheckBox.Checked)
+                departmentComboBox.SelectedItem = null;
         }
     }
 }
